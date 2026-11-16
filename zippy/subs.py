@@ -131,23 +131,30 @@ def parse_link(link: str) -> dict:
         if scheme in ("vless", "trojan", "hysteria2", "hy2", "tuic"):
             u = urllib.parse.urlparse(link)
             info["host"] = u.hostname or ""
-            info["port"] = u.port or (443 if scheme in ("trojan", "vless") else 443)
-            info["security"] = (dict(urllib.parse.parse_qsl(u.query)).get("security") or "none")
+            info["port"] = u.port or 443
+            params = dict(urllib.parse.parse_qsl(u.query))
+            info["params"] = params
+            info["security"] = params.get("security") or "none"
+            info["type"] = params.get("type") or "tcp"
+            info["uuid"] = u.username or ""
+            info["password"] = u.password or ""
         elif scheme == "ss":
             body = link.split("#", 1)[0][5:]
+            method_pw = ""
             if "@" in body:
                 userinfo, hostpart = body.rsplit("@", 1)
                 try:
-                    info["method"] = _b64_decode(userinfo).split(":", 1)[0]
+                    method_pw = _b64_decode(userinfo)
                 except Exception:
-                    info["method"] = "?"
+                    method_pw = ""
                 h, _, p = hostpart.rpartition(":")
                 info["host"], info["port"] = h.strip("[]"), int(p)
             else:
                 decoded = _b64_decode(body)
-                info["method"] = decoded.split(":", 1)[0]
-                h, _, p = decoded.rsplit("@", 1)[1].rpartition(":")
+                method_pw, hostport = decoded.rsplit("@", 1)
+                h, _, p = hostport.rpartition(":")
                 info["host"], info["port"] = h.strip("[]"), int(p)
+            info["method"], _, info["password"] = method_pw.partition(":")
         elif scheme == "vmess":
             cfg = json.loads(_b64_decode(link.split("#", 1)[0][8:]))
             info["host"] = str(cfg.get("add", ""))

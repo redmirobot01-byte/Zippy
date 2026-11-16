@@ -5,12 +5,15 @@ import asyncio
 import base64
 import hashlib
 import json
+import shutil
+import subprocess
 import urllib.parse
+from pathlib import Path
 
 from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.kdf.hkdf import HKDF
 
-from zippy import config, crypto, links, selftest, subs
+from zippy import config, crypto, links, selftest, subs, verify
 
 
 def test_end_to_end_all_protocols():
@@ -92,3 +95,35 @@ def test_vless_link_parser_handles_ipv6():
     url = links.vless_link(cfg)
     assert "@[2001:db8::1]:" in url
     assert subs.parse_link(url)["host"] == "2001:db8::1"
+
+
+def test_verifier_detects_real_working_nodes():
+    """Verifier must actually complete a Shadowsocks AND a VLESS handshake."""
+    results = asyncio.run(verify.self_test())
+    assert len(results) == 2
+    assert all(r.level == "full" for r in results), [r.detail for r in results]
+    assert {r.proto for r in results} == {"ss", "vless"}
+
+
+def test_worker_link_and_client_config():
+    uid = "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"
+    url = links.worker_vless_link("zippy-test.example.workers.dev", uid, "/ws")
+    info = subs.parse_link(url)
+    assert info["proto"] == "vless"
+    assert info["host"] == "zippy-test.example.workers.dev"
+    assert info["port"] == 443
+    assert info["security"] == "tls" and info["type"] == "ws"
+    assert urllib.parse.parse_qs(urllib.parse.urlparse(url).query)["path"] == ["/ws"]
+    client = json.loads(links.worker_client_json(info["host"], uid, "/ws"))
+    assert client["outbounds"][0]["streamSettings"]["network"] == "ws"
+
+
+def test_cloudflare_worker_node_tests():
+    """The Worker JS is exercised end-to-end with mocked Cloudflare APIs."""
+    if not shutil.which("node"):
+        return
+    root = Path(__file__).resolve().parents[1]
+    proc = subprocess.run(["node", "tests/worker_test.mjs"], cwd=root,
+                          capture_output=True, text=True, timeout=60)
+    assert proc.returncode == 0, proc.stdout + proc.stderr
+    assert "5/5" in proc.stdout

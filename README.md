@@ -24,14 +24,17 @@ Bu repo boşdy; indi içinde iki zadyň ikisi hem bar:
 | Maksadyň | Näme etmeli | Wagty |
 | --- | --- | --- |
 | **Şu wagt telefonda internete girmek** | v2rayNG / Hiddify gur → [`configs/qr-verified-subscription.svg`](configs/qr-verified-subscription.svg) QR-ny skanirle → «Täzele» → düwün saýla → birik. Işlemese başga düwün saýla. | ~2 min |
-| **Öz howpsuz, hemişelik VPN-iň** | VPS (Ubuntu, köpçülikleýin IP) al → aşakdaky bir buýrugy işlet → `/etc/zippy/links.txt`-däki linki telefona göçür. | ~10 min |
-| **Kodyň işleýänini barlamak** | `pip install -r requirements.txt && python -m zippy selftest` (9/9 OK) | ~1 min |
+| **Haýsysynyň hakykatdan işleýänini bilmek** | Öz kompýuteriňde `python -m zippy verify --qr 3` — düwünleri **şifrlenen el gysyş + HTTP jogaby** bilen barlap, işleýänlerini we QR-laryny `configs/`-e ýazýar. | ~1 min |
+| **VPS-siz ÖZ hemişelik VPN-iň** ⭐ | [`deploy/CLOUDFLARE.md`](deploy/CLOUDFLARE.md) — Cloudflare Workers Free (kartsyz, mugt): `cloudflare-worker.js`-ni göçürip goý, `UUID` goş, `python -m zippy worker-link ...` → QR-ny skanirle. | ~5 min |
+| **VPS bar bolsa** | Aşakdaky bir buýruk → `/etc/zippy/links.txt`-däki linki telefona göçür. | ~10 min |
+| **Kodyň işleýänini barlamak** | `pytest -q` (12 test) + `python -m zippy selftest` (9/9) + `node tests/worker_test.mjs` (5/5) | ~1 min |
 
-> VPS-iň ýok bolsa, ikinji ýol üçin maňa «VPS ýok» diý — Hetzner/Oracle ýaly
-> arzan ýa-da mugt wariantlary we ädimleri bilelikde saýlarys. VPS-iň IP-si bar bolsa,
-> şony bersegi gurnama buýrugyny taýýar görnüşde ýazyp bererin.
+> **VPS ýok bolsa** — üçünji setir saňa niýetlenen: öz Worker-iň, öz UUID-iň,
+> hiç hili töleg ýok. Mugt köpçülikleýin düwünlerden tapawutlylykda traffigiň
+> näbelli adamlaryň elinden geçmeýär. Sandbox-yň daşarky akymy çäkli bolany üçin
+> `verify` we Worker deploy-y **öz kompýuteriňde / öz hasabyňda** işledilýär.
 >
-> ⚠️ Birinji ýoldaky düwünler näbelli adamlaryňky — parol/bank/2FA üçin ulanmaň.
+> ⚠️ Birinji setirdäki düwünler näbelli adamlaryňky — parol/bank/2FA üçin ulanmaň.
 
 ---
 
@@ -170,9 +173,11 @@ Jikme-jiklikler we **howpsuzlyk duýduryşlary**: [`configs/README.md`](configs/
 | `python -m zippy client-config` | Xray/v2rayN üçin `client.json` |
 | `python -m zippy local --proto vless` | lokal SOCKS5 (10808) |
 | `python -m zippy subs --check` | GitHub-dan işleýän mugt konfiglar |
+| `python -m zippy verify` | **hakyky el gysyş** bilen işleýänleri saýla + QR |
+| `python -m zippy worker-link --host HOST --uuid UUID` | Cloudflare Worker üçin link + QR |
 | `python -m zippy cert` | TLS sertifikatyny täzele |
 | `python -m zippy selftest` | 9 sany uçdan-uça synag |
-| `pytest -q` | 9 sany birlik + integrasiýa testi |
+| `pytest -q` / `node tests/worker_test.mjs` | 12 / 5 sany test |
 
 ---
 
@@ -221,11 +226,14 @@ her çank iki AEAD operasiýasy (uzynlyk + maglumat) bilen goralýar.
 ## Faýl agajy
 
 ```
-zippy/            server + protokollar (crypto, stream, shadowsocks, vless, socks, subs, cli)
-deploy/install.sh         Python serwerini VPS-e gurnaýjy (systemd)
-deploy/install-xray.sh    Xray-core + REALITY + VMess + SS gurnaýjy
-configs/                  mugt GitHub konfig çeşmeleri + nusga sanaw
-tests/                    pytest (9 test) + selftest moduly
+zippy/                        server + protokollar (crypto, stream, shadowsocks,
+                              vless, socks, subs, verify, cli)
+deploy/install.sh             Python serwerini VPS-e gurnaýjy (systemd)
+deploy/install-xray.sh        Xray-core + REALITY + VMess + SS gurnaýjy
+deploy/cloudflare-worker.js   VPS-siz VLESS/WS Worker (Cloudflare Free)
+deploy/CLOUDFLARE.md          şol Worker-i 5 minutda gurnamak
+configs/                      mugt GitHub konfig çeşmeleri, QR-lar, abunalar
+tests/                        pytest (12) + selftest + worker_test.mjs (Node, 5)
 ```
 
 Kody erkin ulanyp, üýtgedip bilersiňiz (açyk çeşme). Mesele / goşant üçin GitHub Issues açyň.

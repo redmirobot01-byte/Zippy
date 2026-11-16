@@ -38,6 +38,26 @@ görnüşinde (2026-11-16). Mazmunyny göçürip, klientiň «clipboard-dan impo
 python -m zippy qr --url "https://raw.githubusercontent.com/.../configs_base64.txt" --out qr.svg
 ```
 
+## ✅ Haýsysy **hakykatdan** işleýär? (öz kompýuteriňde işlet)
+
+```bash
+python -m zippy verify --proto ss,vless --max 250 --qr 3
+python -m zippy verify --self-test          # guralyň özüni barlamak
+```
+
+Bu ýönekeý «port açykmy» barlagy däl: `ss://` düwünlerine **öz şifrlenen
+Shadowsocks klientimiz** bilen birigip, olaryň üsti bilen hakyky HTTP sorag
+iberýär we `HTTP/` jogabyny alýar; `vless://` (plain TCP) üçin hem şeýle.
+Netijede `full` (doly işleýär) we `port` (diňe el gysyş açyk) bellikleri goýulýar.
+
+Çykyşlar: `working-configs.txt`, `working-subscription.txt`, `working-report.md`
+we iň çalt 3 düwün üçin `qr-working-1..3.svg` (göçürip telefon bilen skanirle).
+
+> ⚠️ Bu guraly **öz kompýuteriňde** işlet. Agent sandbox-ynda daşarky TCP
+> maglumat akymy çäkli (diňe el gysyş rugsat edilýär), şonuň üçin ol ýerde
+> düwünler «jogapsyz» görünýär. Öz kompýuteriňde hiç hili çäklendirme ýok.
+> Konfiglar çalt könelýär — her gezek täzeden `verify` işlet.
+
 ## Täze konfiglary almak
 
 ```bash

@@ -64,6 +64,40 @@ def subscription_text(cfg: dict) -> str:
     return base64.b64encode(plain.encode()).decode()
 
 
+def worker_vless_link(host: str, user_uuid: str, path: str = "/ws",
+                      name: str = "Zippy-Worker") -> str:
+    """VLESS over WebSocket / TLS for a Cloudflare Workers deployment."""
+    params = {
+        "encryption": "none", "security": "tls", "type": "ws",
+        "host": host, "path": path, "sni": host, "fp": "chrome",
+    }
+    return f"vless://{user_uuid}@{host}:443?{urlencode(params)}#{quote(name)}"
+
+
+def worker_client_json(host: str, user_uuid: str, path: str = "/ws") -> str:
+    """Xray / v2rayN client config for the Cloudflare Worker inbound."""
+    return json.dumps({
+        "log": {"loglevel": "warning"},
+        "inbounds": [{
+            "tag": "socks-in", "listen": "127.0.0.1", "port": 10808,
+            "protocol": "socks", "settings": {"auth": "noauth", "udp": False},
+        }],
+        "outbounds": [{
+            "tag": "zippy-worker", "protocol": "vless",
+            "settings": {"vnext": [{
+                "address": host, "port": 443,
+                "users": [{"id": user_uuid, "encryption": "none", "flow": ""}],
+            }]},
+            "streamSettings": {
+                "network": "ws", "security": "tls",
+                "wsSettings": {"path": path, "headers": {"Host": host}},
+                "tlsSettings": {"serverName": host, "fingerprint": "chrome"},
+            },
+        }],
+        "routing": {"rules": []},
+    }, indent=2)
+
+
 def xray_client_json(cfg: dict) -> str:
     """Minimal Xray / v2rayN client config for desktop use."""
     outbounds = []
