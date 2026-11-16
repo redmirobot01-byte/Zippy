@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="tk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#080d14">
+  <meta name="description" content="Zippy VPN — VPS-siz GitHub arkaly awtomatiki täzelenýän Happ VPN abunasy (Android üçin).">
+  <title>Zippy VPN — Happ Android</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell topbar-inner">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z"/>
+          </svg>
+        </div>
+        <div>
+          <div class="brand-title">Zippy VPN</div>
+          <div class="brand-sub">Happ · Android · VPS-siz</div>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <span class="status-pill" id="statusPill">
+          <span class="status-dot"></span>
+          <span id="statusText">Ýüklenýär...</span>
+        </span>
+        <a class="icon-link" id="repoLink" href="https://github.com/redmirobot01-byte/Zippy" target="_blank" rel="noopener noreferrer" aria-label="GitHub repozitoriýasy" title="GitHub">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 007.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.38-3.87-1.38-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.2 1.77 1.2 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 015.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.12 3.05.74.81 1.18 1.83 1.18 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0023.5 12C23.5 5.65 18.35.5 12 .5z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="shell">
+    <!-- Primary Happ Import Card -->
+    <section class="hero" aria-labelledby="heroTitle">
+      <div class="hero-head">
+        <div>
+          <h1 id="heroTitle">Happ VPN-ä 1 basymda goş</h1>
+          <p class="hero-desc">GitHub Actions her 3 sagatdan işleýän Reality, VLESS, Hysteria2, Trojan we SS serwerlerini barlap täzeleýär.</p>
+        </div>
+      </div>
+
+      <div class="meta-strip" id="metaStrip">
+        <span>Täzelendi: <strong id="updatedAt">—</strong></span>
+        <span>Abunada: <strong id="mainCount">—</strong></span>
+        <span>Ýurtlar: <strong id="countryCount">—</strong></span>
+      </div>
+
+      <div class="mirror-bar">
+        <span class="mirror-label">Link çeşmesi (biri açylmasa beýlekisini saýlaň):</span>
+        <div class="mirror-pills" id="mirrorPills" role="radiogroup" aria-label="Link çeşmesi"></div>
+      </div>
+
+      <div class="url-box">
+        <code class="url-text" id="primaryUrl">https://raw.githubusercontent.com/redmirobot01-byte/Zippy/main/sub/happ.txt</code>
+      </div>
+
+      <a class="btn btn-primary" id="openHappPrimary" href="happ://add/https://raw.githubusercontent.com/redmirobot01-byte/Zippy/main/sub/happ.txt">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z"/>
+        </svg>
+        <span>Happ VPN-de Aç</span>
+      </a>
+
+      <div class="hero-actions-sub">
+        <button type="button" class="btn btn-secondary" id="copyPrimaryBtn">Linki nusgala</button>
+        <button type="button" class="btn btn-secondary" id="qrPrimaryBtn">QR kod</button>
+        <button type="button" class="btn btn-secondary span-mobile" id="copyKeysBtn">25 açary göni nusgala</button>
+      </div>
+    </section>
+
+    <!-- Navigation Tabs -->
+    <nav class="tabs" role="tablist" aria-label="Bölümler">
+      <button type="button" class="tab-btn active" role="tab" aria-selected="true" aria-controls="panel-subs" data-tab="subs">Abunalar</button>
+      <button type="button" class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-servers" data-tab="servers">Serwerler</button>
+      <button type="button" class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-guide" data-tab="guide">Gollanma</button>
+    </nav>
+
+    <!-- TAB 1: Subscriptions -->
+    <section class="tab-panel active" id="panel-subs" role="tabpanel">
+      <div class="section-label">Happ üçin taýýar abunalar</div>
+      <div class="sub-list" id="mainSubsList"></div>
+
+      <div class="section-label">Protokol boýunça aýratyn linkler</div>
+      <div class="proto-grid" id="protoGrid"></div>
+    </section>
+
+    <!-- TAB 2: Individual Servers -->
+    <section class="tab-panel" id="panel-servers" role="tabpanel">
+      <div class="filter-group">
+        <span class="mirror-label">Protokol:</span>
+        <div class="mirror-pills" id="protoFilterPills"></div>
+      </div>
+      <div class="filter-group">
+        <span class="mirror-label">Ýurt:</span>
+        <div class="mirror-pills" id="countryFilterPills"></div>
+      </div>
+
+      <div class="servers-toolbar">
+        <span class="servers-count" id="filteredCount">0 serwer</span>
+        <button type="button" class="btn btn-secondary btn-sm" id="copyFilteredBtn">Sanawy nusgala</button>
+      </div>
+
+      <div class="node-list" id="nodeList"></div>
+    </section>
+
+    <!-- TAB 3: Android + Happ Guide -->
+    <section class="tab-panel" id="panel-guide" role="tabpanel">
+      <div class="guide-card">
+        <h2>Android-da Happ VPN bilen nädip ulanmaly?</h2>
+        <ol class="steps">
+          <li>
+            <span class="step-num">1</span>
+            <div>Ýokardaky ýaşyl <strong>«Happ VPN-de Aç»</strong> düwmesine basyň — Happ özi açylyp, <strong>Zippy VPN</strong> abunasyny awtomatiki goşar.</div>
+          </li>
+          <li>
+            <span class="step-num">2</span>
+            <div>Eger brauzer programmany göni açmasa, <strong>«Linki nusgala»</strong> (ýa-da <strong>«25 açary göni nusgala»</strong>) basyň → Happ-a giriň → sag ýokarky <strong>«+»</strong> → <strong>«Buferden goş / Import from clipboard»</strong> basyň.</div>
+          </li>
+          <li>
+            <span class="step-num">3</span>
+            <div>Happ-da serwer sanawynyň ýokarsyndaky <strong>ping (barlag)</strong> belgisine basyň we iň pes <span class="inline-code">ms</span> görkezýän serweri saýlaň (Germaniýa, Niderlandlar, Finlýandiýa, Polşa adatça iň çalt işleýär).</div>
+          </li>
+          <li>
+            <span class="step-num">4</span>
+            <div>Merkezdäki uly birikdiriş düwmesine basyň. Abuna her <strong>3 sagatdan</strong> GitHub-dan täze serwerleri awtomatiki alýar.</div>
+          </li>
+        </ol>
+      </div>
+
+      <div class="guide-card">
+        <h2>Güýçli bloklamada maslahatlar</h2>
+        <ul class="tip-list">
+          <li><strong>VLESS Reality</strong> we <strong>Hysteria2</strong> protokollary çäklendirilen mobil we Wi-Fi torlarda iň durnukly işleýär — <em>Abunalar</em> bölüminden aýratyn goşup bilersiňiz.</li>
+          <li><strong>Happ Fragment (Anti-DPI):</strong> SNI bloklanýan bolsa, <span class="inline-code">happ-fragment.json</span> abunasyny Happ-a goşuň — ol TLS paketini bölekläp geçirýär.</li>
+          <li><strong>Link täzelenmese:</strong> Ýokardaky çeşmäni <strong>GitHub Pages</strong> ýa-da <strong>jsDelivr CDN</strong> aýnasyna geçiriň, ýa-da <strong>Happ Base64</strong> linkini ulanyň.</li>
+          <li><strong>Şahsy açar goşmak:</strong> Öz tapan <span class="inline-code">vless://</span> ýa-da <span class="inline-code">trojan://</span> açaryňyzy repozitoriýadaky <span class="inline-code">config/custom_nodes.txt</span> faýlyna ýazsaňyz, ol abunanyň iň başyna goşulýar.</li>
+        </ul>
+
+        <div class="guide-links">
+          <a class="btn btn-accent-outline btn-sm" id="actionsRunLink" href="https://github.com/redmirobot01-byte/Zippy/actions" target="_blank" rel="noopener noreferrer">Serwerleri häzir täzele (GitHub Actions)</a>
+          <a class="btn btn-secondary btn-sm" id="customNodesLink" href="https://github.com/redmirobot01-byte/Zippy/edit/main/config/custom_nodes.txt" target="_blank" rel="noopener noreferrer">Şahsy açar goş</a>
+          <a class="btn btn-secondary btn-sm" href="https://play.google.com/store/apps/details?id=com.happproxy" target="_blank" rel="noopener noreferrer">Happ (Google Play)</a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      Zippy VPN · VPS-siz açyk kodly Happ abuna ulgamy ·
+      <a id="footerRepoLink" href="https://github.com/redmirobot01-byte/Zippy" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </footer>
+  </main>
+
+  <!-- QR Modal -->
+  <div class="modal-backdrop" id="qrBackdrop" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="qrTitle">
+      <h3 id="qrTitle">QR kod</h3>
+      <p class="modal-hint">Happ VPN → «+» → QR kod skanirle</p>
+      <div class="qr-frame" id="qrFrame"></div>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-secondary btn-sm" id="qrCopyBtn">Nusgala</button>
+        <button type="button" class="btn btn-accent-outline btn-sm" id="qrCloseBtn">Ýap</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="./qr.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>

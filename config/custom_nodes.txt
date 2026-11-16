@@ -1,0 +1,6 @@
+# Zippy VPN — Şahsy (goşmaça) serwerler faýly
+# ---------------------------------------------------------------
+# Isleseňiz, öz tapan vless://, trojan://, vmess://, ss:// ýa-da
+# hysteria2:// açarlaryňyzy her setire birini goýup ýazdyryp bilersiňiz.
+# GitHub Actions olary hem barlap, Happ abunaňyzyň iň başyna goşar.
+# (# belgisi bilen başlanýan setirler teswir hasaplanýar.)

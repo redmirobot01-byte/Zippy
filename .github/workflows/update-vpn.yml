@@ -1,0 +1,118 @@
+name: Zippy VPN — Serwerleri Täzele
+
+on:
+  schedule:
+    # Her 3 sagatdan awtomatiki täzelenýär (UTC)
+    - cron: "23 */3 * * *"
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "Barlag görnüşi (xray = doly 204 barlag, tcp = çalt TCP/TLS barlag)"
+        required: false
+        default: "xray"
+        type: choice
+        options:
+          - xray
+          - tcp
+          - source
+      max_candidates:
+        description: "Barlanjak serwer sany"
+        required: false
+        default: "450"
+        type: string
+  push:
+    branches:
+      - main
+    paths:
+      - "config/**"
+      - "zippy/**"
+      - "scripts/**"
+      - ".github/workflows/update-vpn.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: zippy-vpn-update-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  update-subscriptions:
+    name: VPN serwerleri ýygna we Xray bilen barla
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Repozitoriýany al
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Python 3.12 gurna
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Xray-core gurna (SHA-256 barlagly)
+        id: install_xray
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          META="$(gh api repos/XTLS/Xray-core/releases/latest --jq '.assets[] | select(.name=="Xray-linux-64.zip") | "\(.browser_download_url) \(.digest // "")"')"
+          URL="$(echo "$META" | awk '{print $1}')"
+          DIGEST="$(echo "$META" | awk '{print $2}' | sed 's/^sha256://')"
+
+          mkdir -p "$RUNNER_TEMP/xray"
+          curl -fsSL --retry 3 --max-time 60 "$URL" -o "$RUNNER_TEMP/xray/Xray-linux-64.zip"
+
+          if [ -n "$DIGEST" ]; then
+            echo "${DIGEST}  $RUNNER_TEMP/xray/Xray-linux-64.zip" | sha256sum -c -
+          fi
+
+          unzip -q -o "$RUNNER_TEMP/xray/Xray-linux-64.zip" -d "$RUNNER_TEMP/xray"
+          chmod +x "$RUNNER_TEMP/xray/xray"
+          echo "$RUNNER_TEMP/xray" >> "$GITHUB_PATH"
+          "$RUNNER_TEMP/xray/xray" version | head -n 1
+
+      - name: Serwerleri ýygna, barla we Happ faýllaryny döret
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          RUN_MODE: ${{ inputs.mode || 'xray' }}
+          MAX_CANDIDATES: ${{ inputs.max_candidates || '450' }}
+        run: |
+          # San görnüşini howpsuz barla
+          if ! [[ "$MAX_CANDIDATES" =~ ^[0-9]+$ ]]; then
+            MAX_CANDIDATES="450"
+          fi
+          python3 scripts/update_subs.py \
+            --mode "$RUN_MODE" \
+            --max-candidates "$MAX_CANDIDATES" \
+            --concurrency 45 \
+            --repo "${{ github.repository }}" \
+            --branch "${{ github.ref_name }}"
+
+      - name: Täzelenen Happ abunalaryny GitHub-a ýaz
+        run: |
+          set -euo pipefail
+          VALID_LINES="$(grep -cE '^(vless|trojan|vmess|ss|hysteria2|hy2)://' sub/happ.txt || true)"
+          echo "Happ abunasyndaky işleýän serwer sany: $VALID_LINES"
+          if [ "$VALID_LINES" -lt 10 ]; then
+            echo "Ýeterlik serwer tapylmady ($VALID_LINES), öňki işleýän sanaw saklanýar."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add sub/ docs/sub/
+
+          if git diff --cached --quiet; then
+            echo "Üýtgeşme ýok — täze commit gerek däl."
+            exit 0
+          fi
+
+          NOW_UTC="$(date -u +'%Y-%m-%d %H:%M UTC')"
+          git commit -m "chore(sub): update Happ VPN nodes (${VALID_LINES} active) — ${NOW_UTC}"
+          git pull --rebase origin "${{ github.ref_name }}"
+          git push origin "HEAD:${{ github.ref_name }}"
