@@ -1,0 +1,117 @@
+{
+  "profile": {
+    "title": "Zippy VPN",
+    "update_interval_hours": 3,
+    "announce": "⚡ Zippy VPN — GitHub arkaly awto-täzelenýär (Happ Android)",
+    "repo": "redmirobot01-byte/Zippy",
+    "branch": "main"
+  },
+  "limits": {
+    "happ_main": 100,
+    "happ_fast": 30,
+    "reality": 80,
+    "fragment": 25,
+    "per_protocol": 80,
+    "all": 250,
+    "max_per_host": 2,
+    "min_valid_to_publish": 10
+  },
+  "preferred_countries": [
+    "DE", "NL", "FI", "SE", "AT", "CH", "PL", "FR",
+    "GB", "TR", "EE", "LV", "LT", "CZ", "RO", "BG",
+    "NO", "DK", "IE", "IT", "ES", "US", "CA", "SG", "JP"
+  ],
+  "sources": [
+    {
+      "name": "0xRadikal Google-Verified",
+      "url": "https://raw.githubusercontent.com/0xRadikal/Free-v2ray-Configs/main/google/configs.txt",
+      "weight": 100,
+      "max_items": 500,
+      "enabled": true
+    },
+    {
+      "name": "0xRadikal Fast-Verified",
+      "url": "https://raw.githubusercontent.com/0xRadikal/Free-v2ray-Configs/main/fast/configs.txt",
+      "weight": 96,
+      "max_items": 600,
+      "enabled": true
+    },
+    {
+      "name": "Delta-Kronecker Xray Reality",
+      "url": "https://raw.githubusercontent.com/Delta-Kronecker/V2ray-Config/main/config/reality/reality.txt",
+      "weight": 95,
+      "max_items": 500,
+      "enabled": true
+    },
+    {
+      "name": "igareck Reality Mobile",
+      "url": "https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/main/Vless-Reality-White-Lists-Rus-Mobile.txt",
+      "weight": 93,
+      "max_items": 300,
+      "enabled": true
+    },
+    {
+      "name": "igareck VLESS Verified",
+      "url": "https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/main/BLACK_VLESS_RUS.txt",
+      "weight": 91,
+      "max_items": 300,
+      "enabled": true
+    },
+    {
+      "name": "Delta-Kronecker Xray VLESS",
+      "url": "https://raw.githubusercontent.com/Delta-Kronecker/V2ray-Config/main/config/protocols/vless.txt",
+      "weight": 90,
+      "max_items": 500,
+      "enabled": true
+    },
+    {
+      "name": "Delta-Kronecker Xray Trojan",
+      "url": "https://raw.githubusercontent.com/Delta-Kronecker/V2ray-Config/main/config/protocols/trojan.txt",
+      "weight": 88,
+      "max_items": 400,
+      "enabled": true
+    },
+    {
+      "name": "Delta-Kronecker Xray Shadowsocks",
+      "url": "https://raw.githubusercontent.com/Delta-Kronecker/V2ray-Config/main/config/protocols/ss.txt",
+      "weight": 86,
+      "max_items": 400,
+      "enabled": true
+    },
+    {
+      "name": "noahclanman Xray Top-100",
+      "url": "https://raw.githubusercontent.com/noahclanman/free-xray-gcp/main/output/top100.txt",
+      "weight": 88,
+      "max_items": 150,
+      "enabled": true
+    },
+    {
+      "name": "igareck Mixed Verified",
+      "url": "https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/main/BLACK_SS%2BAll_RUS.txt",
+      "weight": 84,
+      "max_items": 300,
+      "enabled": true
+    },
+    {
+      "name": "morpheusadam Hysteria2",
+      "url": "https://raw.githubusercontent.com/morpheusadam/v2ray-config/main/subs/bundles/hysteria2.txt",
+      "weight": 82,
+      "max_items": 400,
+      "enabled": true
+    },
+    {
+      "name": "Surfboardv2ray Hysteria2",
+      "url": "https://raw.githubusercontent.com/Surfboardv2ray/TGParse/main/splitted/hysteria2",
+      "weight": 80,
+      "max_items": 200,
+      "enabled": true
+    },
+    {
+      "name": "morpheusadam Mini Top-100",
+      "url": "https://raw.githubusercontent.com/morpheusadam/v2ray-config/main/subs/bundles/mini.txt",
+      "weight": 80,
+      "max_items": 150,
+      "enabled": true
+    }
+  ]
+}

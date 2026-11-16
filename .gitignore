@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# Temporary runtime files
+.tmp/
+*.log
+xray
+xray.zip
+geoip.dat
+geosite.dat
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

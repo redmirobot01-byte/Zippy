@@ -1,0 +1,38 @@
+name: Zippy VPN — Web Panel (GitHub Pages)
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "docs/**"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "zippy-pages"
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: GitHub Pages-a ýerleşdir
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Repozitoriýany al
+        uses: actions/checkout@v4
+      - name: Pages sazla
+        uses: actions/configure-pages@v5
+      - name: docs/ bukjasyny ýükle
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "docs"
+      - name: Pages ýaýrat
+        id: deployment
+        uses: actions/deploy-pages@v4
