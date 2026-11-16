@@ -13,6 +13,31 @@ Bu düwünler **näbelli adamlar** tarapyndan dolandyrylýar. Şonuň üçin:
 - düwünler birnäçe sagatda ýapylyp bilýär — şonuň üçin hemişe täzesini alyň;
 - howpsuzlyk gerek bolsa **öz serveriňizi** gurup ulanyň: `sudo bash deploy/install.sh`.
 
+## ⚡ Iň çalt ýol: QR-ny skanirle (telefon)
+
+`configs/qr-verified-subscription.svg` faýlyny kompýuteriň ekranynda aç (ýa-da
+aşakdaky görnüşde görkez) → **v2rayNG / Hiddify**-da «+» → **QR skanirle** →
+abuna awtomatiki goşular → «Täzele» → bir düwün saýlap birik.
+
+| QR faýly | Näme berýär |
+| --- | --- |
+| `qr-verified-subscription.svg` | **hemmesi, barlanan** (maslahat) |
+| `qr-vless-subscription.svg` | diňe VLESS / Reality |
+| `qr-vmess-subscription.svg` | diňe VMess |
+| `qr-shadowsocks-subscription.svg` | diňe Shadowsocks |
+
+QR-laryň içinde diňe ýokardaky abuna URL-leri bar — her gezek skanirläniňde
+GitHub-dan **iň täze** sanaw alynýar (konfiglar könelemeýär).
+
+Şeýle hem `configs/subscription-fresh.txt` — 30 sany täze konfig base64 abuna
+görnüşinde (2026-11-16). Mazmunyny göçürip, klientiň «clipboard-dan import» bölümine goý.
+
+Öz QR-yňy döretmek üçin:
+
+```bash
+python -m zippy qr --url "https://raw.githubusercontent.com/.../configs_base64.txt" --out qr.svg
+```
+
 ## Täze konfiglary almak
 
 ```bash

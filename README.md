@@ -19,6 +19,22 @@ Bu repo boşdy; indi içinde iki zadyň ikisi hem bar:
 
 ---
 
+## 0. «Indi näme etmeli?» — 3 ýol, birini saýla
+
+| Maksadyň | Näme etmeli | Wagty |
+| --- | --- | --- |
+| **Şu wagt telefonda internete girmek** | v2rayNG / Hiddify gur → [`configs/qr-verified-subscription.svg`](configs/qr-verified-subscription.svg) QR-ny skanirle → «Täzele» → düwün saýla → birik. Işlemese başga düwün saýla. | ~2 min |
+| **Öz howpsuz, hemişelik VPN-iň** | VPS (Ubuntu, köpçülikleýin IP) al → aşakdaky bir buýrugy işlet → `/etc/zippy/links.txt`-däki linki telefona göçür. | ~10 min |
+| **Kodyň işleýänini barlamak** | `pip install -r requirements.txt && python -m zippy selftest` (9/9 OK) | ~1 min |
+
+> VPS-iň ýok bolsa, ikinji ýol üçin maňa «VPS ýok» diý — Hetzner/Oracle ýaly
+> arzan ýa-da mugt wariantlary we ädimleri bilelikde saýlarys. VPS-iň IP-si bar bolsa,
+> şony bersegi gurnama buýrugyny taýýar görnüşde ýazyp bererin.
+>
+> ⚠️ Birinji ýoldaky düwünler näbelli adamlaryňky — parol/bank/2FA üçin ulanmaň.
+
+---
+
 ## 1. Çalt başlamak (öz kompýuteriňde, 1 minut)
 
 ```bash

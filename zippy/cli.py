@@ -63,6 +63,8 @@ def build_parser() -> argparse.ArgumentParser:
     _add_config(q)
     q.add_argument("--proto", choices=["vless", "shadowsocks"], default="vless")
     q.add_argument("--out", default="zippy-qr.svg")
+    q.add_argument("--url", default="",
+                   help="islege görä: konfig linkiň ýerine islendik URL (abuna URL) üçin QR")
 
     q = sub.add_parser("client-config", help="Xray/v2rayN üçin client.json döret")
     _add_config(q)
@@ -207,18 +209,23 @@ def main(argv: list[str] | None = None) -> int:
             return 0
 
         if args.cmd == "qr":
-            cfg = config.load(args.config)
-            items = links.all_links(cfg)
-            item = next((x for x in items if x["protocol"] == args.proto), None)
-            if item is None:
-                print(f"{args.proto} öçürilen", file=sys.stderr)
-                return 1
+            if args.url:
+                payload = args.url
+            else:
+                cfg = config.load(args.config)
+                item = next((x for x in links.all_links(cfg)
+                             if x["protocol"] == args.proto), None)
+                if item is None:
+                    print(f"{args.proto} öçürilen", file=sys.stderr)
+                    return 1
+                payload = item["url"]
             try:
                 import qrcode
                 import qrcode.image.svg
-                img = qrcode.make(item["url"], image_factory=qrcode.image.svg.SvgPathImage)
+                img = qrcode.make(payload, image_factory=qrcode.image.svg.SvgPathImage)
                 img.save(args.out)
                 print(f"  QR SVG ýazyldy: {args.out}")
+                print(f"  Içinde: {payload[:110]}")
             except ImportError:
                 print("  QR üçin: pip install qrcode  (ýa-da linki göçürip el bilen giriz)")
                 return 1

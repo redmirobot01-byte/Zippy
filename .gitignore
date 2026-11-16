@@ -14,4 +14,6 @@ client.json
 *.crt
 certs/
 *.svg
+# taýýar abuna QR-lary repoda galmalydyr
+!configs/qr-*.svg
 configs/snapshot-*.txt
