@@ -16,4 +16,11 @@ certs/
 *.svg
 # taýýar abuna QR-lary repoda galmalydyr
 !configs/qr-*.svg
+
+# ŞAHSY: öz UUID/parollaryň we täze barlanan düwünler Git-e gitmesin
+configs/worker-*.txt
+configs/worker-*.json
+configs/working-*.txt
+configs/working-*.md
+configs/qr-working-*.svg
 configs/snapshot-*.txt
