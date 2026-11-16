@@ -1,0 +1,17 @@
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+
+# NEVER commit secrets or generated client configs
+zippy.json
+links.txt
+subscription.txt
+client.json
+*.key
+*.crt
+certs/
+*.svg
+configs/snapshot-*.txt

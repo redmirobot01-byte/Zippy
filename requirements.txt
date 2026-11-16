@@ -1,0 +1,5 @@
+# Zippy VPN — runtime dependencies
+cryptography>=41.0
+
+# Optional: `python -m zippy qr` needs this (SVG QR codes need no Pillow)
+qrcode>=7.4
