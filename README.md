@@ -129,3 +129,11 @@ Zippy/
 ├── docs/                   # Android üçin türkmen dilindäki Web Panel + QR generator
 └── tests/                  # Awtomatiki testler
 ```
+
+### 🤖 Awtomatik bejergi faýly (Windows)
+
+Ähli brauzer birwagtda işlemeýär, ýöne Wi-Fi işleýär bolsa — [`tools/fix-windows-browser.bat`](tools/fix-windows-browser.bat) faýlyny **Administrator** hökmünde işlediň: ol ulgam proksisini aýyrýar, DNS-i DHCP-ä gaýtarýar, galan Happ/wintun/TAP adapterlerini öçürýär, `winsock`/`ip` reset edýär. Soňra kompýuteri täzeden açyň.
+
+```text
+https://github.com/redmirobot01-byte/Zippy/raw/main/tools/fix-windows-browser.bat
+```
