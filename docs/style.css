@@ -840,3 +840,38 @@ body {
 .footer a:hover {
   color: var(--text);
 }
+
+/* RU ↔ TK terminologiýa tablisasy */
+.ru-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.84rem;
+  margin: 10px 0 4px;
+}
+
+.ru-table th,
+.ru-table td {
+  text-align: left;
+  padding: 7px 9px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+
+.ru-table th {
+  color: var(--text-dim);
+  font-weight: 650;
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.ru-table td:first-child {
+  color: var(--amber);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+.ru-table td:last-child {
+  color: var(--text-muted);
+}
