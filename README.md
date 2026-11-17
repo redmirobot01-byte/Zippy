@@ -137,3 +137,7 @@ Zippy/
 ```text
 https://github.com/redmirobot01-byte/Zippy/raw/main/tools/fix-windows-browser.bat
 ```
+
+### 🔎 Chrome tapylmasa / pozulan bolsa
+
+[`tools/install-chrome.bat`](tools/install-chrome.bat) — Administrator hökmünde işlediň: ol Chrome-y üç sany adaty ýerde gözleýär (`Program Files`, `Program Files (x86)`, `%LocalAppData%`), tapmasa `winget` bilen, ol bolmasa `dl.google.com`-dan resmi `ChromeSetup.exe`-i ýükläp gurýar. Profileňiz bar bolsa, Chrome-a girip Google hasabyňyz bilen sine-in ediň — zakladkalar/parollar yzyna gelýär.
