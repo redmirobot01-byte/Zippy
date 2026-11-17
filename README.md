@@ -141,3 +141,11 @@ https://github.com/redmirobot01-byte/Zippy/raw/main/tools/fix-windows-browser.ba
 ### 🔎 Chrome tapylmasa / pozulan bolsa
 
 [`tools/install-chrome.bat`](tools/install-chrome.bat) — Administrator hökmünde işlediň: ol Chrome-y üç sany adaty ýerde gözleýär (`Program Files`, `Program Files (x86)`, `%LocalAppData%`), tapmasa `winget` bilen, ol bolmasa `dl.google.com`-dan resmi `ChromeSetup.exe`-i ýükläp gurýar. Profileňiz bar bolsa, Chrome-a girip Google hasabyňyz bilen sine-in ediň — zakladkalar/parollar yzyna gelýär.
+
+### 🔎 «Windows cannot find chrome.exe» näme üçin çykýar?
+
+1. **Win + R bir ýola diňe BIR ýol kabul edýär** — üç setiri bir wagtda goýsaňyz, hiç biri işlemez. Her ýoly aýratyn barlap görüň.
+2. **Goşa dyrnak (`"`) goýmak bolmaýar** — `"C:\...\chrome.exe"` ýaly ýazsaňyz, Windows şol dyrnagyň özüni faýl ady hasaplaýar. Diňe `C:\Program Files\Google\Chrome\Application\chrome.exe` ýazmaly.
+3. Şol ýolda hakykatdan `chrome.exe` ýok → Chrome **gurnalman** ýa-da başga ulanyjynyň profilinde (`C:\Users\<başga>\AppData\Local\...`) gurnalnan.
+
+[`tools/find-chrome.ps1`](tools/find-chrome.ps1) — Chrome-y standart ýerlerde, registrde, Baslatmenýu shortcut-larynda we `C:` diskiniň içinde gözleýär; tapylsa açýar, tapylmasa `install-chrome.bat`-y maslahat berýär.
