@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#080d14">
-  <meta name="description" content="Zippy VPN — VPS-siz GitHub arkaly awtomatiki täzelenýän Happ VPN abunasy (Android üçin).">
-  <title>Zippy VPN — Happ Android</title>
+  <meta name="description" content="Zippy VPN — VPS-siz GitHub arkaly awtomatiki täzelenýän Happ VPN abunasy (Android we Windows üçin).">
+  <title>Zippy VPN — Happ (Android · Windows)</title>
   <link rel="stylesheet" href="./style.css">
 </head>
 <body>
@@ -19,7 +19,7 @@
         </div>
         <div>
           <div class="brand-title">Zippy VPN</div>
-          <div class="brand-sub">Happ · Android · VPS-siz</div>
+          <div class="brand-sub">Happ · Android · Windows · VPS-siz</div>
         </div>
       </div>
       <div class="topbar-right">
@@ -134,6 +134,44 @@
         </ol>
       </div>
 
+      <div class="guide-card" id="windowsGuide">
+        <h2>💻 Kompýuterde (Windows): Happ + Zippy</h2>
+        <ol class="steps">
+          <li>
+            <span class="step-num">1</span>
+            <div>Happ-yň Windows gurnama faýlyny ýükläň: adaty (Intel/AMD) kompýuter üçin <span class="inline-code">setup-Happ.x64.exe</span> (~120 MB), ARM noutbuk üçin <span class="inline-code">setup-Happ.arm64.exe</span> (~88 MB).</div>
+          </li>
+          <li>
+            <span class="step-num">2</span>
+            <div>Faýly işlediň we gurnaň. «Windows protected your PC» ýazgysy çyksa — <strong>More info</strong> → <strong>Run anyway</strong> (faýl resmi GitHub çeşmesinden bolsa howpsuz).</div>
+          </li>
+          <li>
+            <span class="step-num">3</span>
+            <div>Zippy abuna linkini nusgalap, Happ-da sag ýokarky <strong>«+»</strong> → <strong>Import from clipboard</strong> basyň.</div>
+          </li>
+          <li>
+            <span class="step-num">4</span>
+            <div>Ping barlagyny geçiriň, iň pes <span class="inline-code">ms</span>-li serweri saýlaň we birikdiriň. Brauzer hem VPN-dan geçsin diýseňiz, sazlamalarda <strong>TUN mode</strong>-y açyň.</div>
+          </li>
+        </ol>
+        <div class="guide-links">
+          <a class="btn btn-primary btn-sm" href="https://github.com/Happ-proxy/happ-desktop/releases/latest/download/setup-Happ.x64.exe" rel="noopener noreferrer">Happ x64 (.exe) ýükle</a>
+          <a class="btn btn-secondary btn-sm" href="https://github.com/Happ-proxy/happ-desktop/releases/latest/download/setup-Happ.arm64.exe" rel="noopener noreferrer">Happ ARM64 (.exe) ýükle</a>
+          <a class="btn btn-secondary btn-sm" href="https://github.com/Happ-proxy/happ-desktop/releases/latest" target="_blank" rel="noopener noreferrer">Ähli wersiýalar (GitHub)</a>
+        </div>
+      </div>
+
+      <div class="guide-card" id="desktopFix">
+        <h2>🛠️ VPN-dan soň brauzer / internet işlemeýän bolsa</h2>
+        <ul class="tip-list">
+          <li><strong>Proxy galyndysy (köplenç sebäp şu):</strong> <span class="inline-code">Win + R</span> → <span class="inline-code">inetcpl.cpl</span> → <em>Connections</em> → <em>LAN settings</em> → «Use a proxy server for your LAN» tikini aýyryň → <strong>OK</strong>. Soňra Chrome-y doly ýapyp täzeden açyň.</li>
+          <li><strong>TUN galyndysy:</strong> <span class="inline-code">Win + R</span> → <span class="inline-code">ncpa.cpl</span> → «Happ» / «wintun» atly adapteri tapyp, sag düwme → <em>Disable</em>; ýa-da <em>Device Manager</em> → <em>Network adapters</em> bölüminden aýyryň.</li>
+          <li><strong>Tory arassalamak:</strong> Administrator hökmünde CMD açyň we <span class="inline-code">netsh winsock reset</span>, <span class="inline-code">ipconfig /flushdns</span> ýerine ýetiriň, soňra kompýuteri täzeden açyň.</li>
+          <li><strong>Chrome-y dikeltmek:</strong> <span class="inline-code">chrome://settings/reset</span> → «Restore settings to their original defaults»; <span class="inline-code">chrome://extensions</span> bölüminde nätanyş goşundylary öçüriň.</li>
+          <li><strong>Ýükleme işlemeýän bolsa:</strong> şol bir salgyny <strong>Microsoft Edge</strong>-den açyp görüň (ol Windows-da öňünden bar) ýa-da telefonyňyzyň internet paýlaşmasyny (hotspot) ulanyň.</li>
+        </ul>
+      </div>
+
       <div class="guide-card">
         <h2>Güýçli bloklamada maslahatlar</h2>
         <ul class="tip-list">
@@ -147,6 +185,8 @@
           <a class="btn btn-accent-outline btn-sm" id="actionsRunLink" href="https://github.com/redmirobot01-byte/Zippy/actions" target="_blank" rel="noopener noreferrer">Serwerleri häzir täzele (GitHub Actions)</a>
           <a class="btn btn-secondary btn-sm" id="customNodesLink" href="https://github.com/redmirobot01-byte/Zippy/edit/main/config/custom_nodes.txt" target="_blank" rel="noopener noreferrer">Şahsy açar goş</a>
           <a class="btn btn-secondary btn-sm" href="https://play.google.com/store/apps/details?id=com.happproxy" target="_blank" rel="noopener noreferrer">Happ (Google Play)</a>
+          <a class="btn btn-accent-outline btn-sm" href="https://www.happ.su/" target="_blank" rel="noopener noreferrer">Resmi saýt (happ.su)</a>
+          <a class="btn btn-secondary btn-sm" href="https://www.google.com/chrome/" target="_blank" rel="noopener noreferrer">Chrome-y täzeden gurnama</a>
         </div>
       </div>
     </section>

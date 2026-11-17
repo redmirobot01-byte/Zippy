@@ -64,6 +64,31 @@ Eger internet prowaýderiňizde `raw.githubusercontent.com` haýal açylsa, şol
 
 ---
 
+## 💻 Kompýuterde (Windows) Happ + Zippy
+
+Happ-yň desktopeýn (Windows) wersiýasy hem bar — şol bir Zippy abunasyny kompýuterde-de ulanyp bilersiňiz:
+
+| Kompýuter | Faýl | Göwrum |
+| :--- | :--- | :--- |
+| Adaty Intel/AMD PC | [`setup-Happ.x64.exe`](https://github.com/Happ-proxy/happ-desktop/releases/latest/download/setup-Happ.x64.exe) | ~120 MB |
+| ARM noutbuk | [`setup-Happ.arm64.exe`](https://github.com/Happ-proxy/happ-desktop/releases/latest/download/setup-Happ.arm64.exe) | ~88 MB |
+
+Happ-y **diňe** resmi çeşmeden ýükläň: [happ.su](https://www.happ.su/) ýa-da [Happ-proxy/happ-desktop relizleri](https://github.com/Happ-proxy/happ-desktop/releases/latest).
+
+1. Installeri işlediň; «Windows protected your PC» çyksa — **More info** → **Run anyway**.
+2. Happ-da **«+»** → **Import from clipboard** bilen ýokardaky Zippy linkleriniň birini goşuň.
+3. Ping barlagyny geçirip, iň pes `ms`-li serweri saýlaň we birikdiriň. Brauzer hem VPN-dan geçmegi üçin **TUN mode**-y açyň.
+
+### 🛠️ «VPN-dan soň brauzer / ýükleme işlemeýär» — çalt bejergi
+
+- **Proxy galyndysy:** `Win + R` → `inetcpl.cpl` → *Connections* → *LAN settings* → «Use a proxy server for your LAN» tikini aýyryň → OK → Chrome-y doly ýapyp täzeden açyň.
+- **TUN galyndysy:** `Win + R` → `ncpa.cpl` → «Happ» / «wintun» adapteri → *Disable* (ýa-da Device Manager → Network adapters → aýyr).
+- **Tor arassalamak (Admin CMD):** `netsh winsock reset` we `ipconfig /flushdns`, soňra kompýuteri täzeden açyň.
+- **Chrome-y dikeltmek:** `chrome://settings/reset` → «Restore settings to their original defaults»; `chrome://extensions` → nätanyş goşundylary öçüriň.
+- **Ýükleme işlemeýän bolsa:** salgyny **Microsoft Edge**-den açyp görüň (Windows-da öňünden bar) ýa-da telefonyňyzyň hotspot-yndan peýdalanyň.
+
+---
+
 ## 🌐 Android Web Paneli işjeňleşdirmek (1 gezeklik — telefondan)
 
 Web Paneli (`https://redmirobot01-byte.github.io/Zippy/`) açmak üçin:
