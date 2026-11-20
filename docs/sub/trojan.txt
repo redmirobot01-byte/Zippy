@@ -3,9 +3,7 @@
 #subscription-userinfo: upload=0; download=0; total=0; expire=0
 #profile-web-page-url: https://redmirobot01-byte.github.io/Zippy/
 #announce: base64:4pqhIFppcHB5IFZQTiDigJQgR2l0SHViIGFya2FseSBhd3RvLXTDpHplbGVuw73DpHIgKEhhcHAgQW5kcm9pZCk=
-# Zippy VPN | Updated: 2026-11-20 11:56 UTC | Nodes: 5
-trojan://f0eb8c92ce8946aaba856569cff1a16b@resources.findlocaljobnetworkandbuildcommunityconnections.com:443?security=tls&type=tcp&sni=resources.findlocaljobnetworkandbuildcommunityconnections.com&fp=chrome#%F0%9F%87%BA%F0%9F%87%B8%20US%20%C2%B7%20TROJAN%20%C2%B7%20370ms%20%C2%B7%20Zippy%20%2301
-trojan://4mq9w5ckqw3ewbdg@193.57.88.100:16200?security=tls&type=ws&sni=staticxfastline.taymaztest.ir&fp=chrome&path=%2Fbiyasd&host=staticxfastline.taymaztest.ir&alpn=http%2F1.1#%F0%9F%87%B1%F0%9F%87%BA%20LU%20%C2%B7%20TROJAN%20%C2%B7%20473ms%20%C2%B7%20Zippy%20%2302
-trojan://4mq9w5ckqw3ewbdg@staticxfastline.taymaztest.ir:16200?security=tls&type=ws&sni=staticxfastline.taymaztest.ir&fp=chrome&path=%2Fbiyasd&host=staticxfastline.taymaztest.ir&alpn=http%2F1.1#%F0%9F%87%B1%F0%9F%87%BA%20LU%20%C2%B7%20TROJAN%20%C2%B7%20478ms%20%C2%B7%20Zippy%20%2303
-trojan://FkQH0Q5EFneySv20Qj3yoArD2GSb2XZF@95.143.196.97:443?security=tls&type=tcp&sni=connect-se.mimowhat.online&fp=chrome&alpn=h2%2Chttp%2F1.1#%F0%9F%87%B8%F0%9F%87%AA%20SE%20%C2%B7%20TROJAN%20%C2%B7%201031ms%20%C2%B7%20Zippy%20%2304
-trojan://242a3d8eee5e4ed1a6bfa4141d549a25@www.findlocaljobnetworkandbuildcommunityconnections.com:443?security=tls&type=tcp&sni=www.findlocaljobnetworkandbuildcommunityconnections.com&fp=chrome#%F0%9F%87%BA%F0%9F%87%B8%20US%20%C2%B7%20TROJAN%20%C2%B7%201260ms%20%C2%B7%20Zippy%20%2305
+# Zippy VPN | Updated: 2026-11-20 20:32 UTC | Nodes: 3
+trojan://dba20dcb635e430fa4d3bfc303a149d2@216.106.186.32:443?security=tls&type=tcp&sni=blog.findlocaljobnetworkandbuildcommunityconnections.com&fp=chrome#%F0%9F%87%BA%F0%9F%87%B8%20US%20%C2%B7%20TROJAN%20%C2%B7%20582ms%20%C2%B7%20Zippy%20%2301
+trojan://f0eb8c92ce8946aaba856569cff1a16b@216.106.186.33:443?security=tls&type=tcp&sni=resources.findlocaljobnetworkandbuildcommunityconnections.com&fp=chrome#%F0%9F%87%BA%F0%9F%87%B8%20US%20%C2%B7%20TROJAN%20%C2%B7%20794ms%20%C2%B7%20Zippy%20%2302
+trojan://FkQH0Q5EFneySv20Qj3yoArD2GSb2XZF@95.143.196.97:443?security=tls&type=tcp&sni=connect-se.mimowhat.online&fp=chrome&alpn=h2%2Chttp%2F1.1#%F0%9F%8C%90%20GL%20%C2%B7%20TROJAN%20%C2%B7%202170ms%20%C2%B7%20Zippy%20%2303
