@@ -86,6 +86,28 @@ Serwerler her **3 sagatdan** awtomatiki täzelenýär. El bilen derrew täzeleme
 
 ---
 
+## 📲 Play Market link ýasaýjy
+
+Programmanyň adyndan (ýa-da islendik Android paket adyndan) Google **Play Market** sowda linkini ýasaýan gurallyş:
+
+**🖥️ Terminal / CLI:**
+
+```text
+python3 scripts/play_market_link.py happ          # → Happ VPN üçin Play Market linki
+python3 scripts/play_market_link.py v2rayng       # → v2rayNG üçin
+python3 scripts/play_market_link.py --id com.v2ray.ng   # → islendik paket ady üçin
+python3 scripts/play_market_link.py --list        # → belli programmalaryň sanawy
+python3 scripts/play_market_link.py cloudflare --json --open
+```
+
+**🌐 Web sahypa (GitHub Pages bilen ýaýraýar):**
+
+Panel ýaýrandan soň **`https://redmirobot01-byte.github.io/Zippy/playmarket.html`** salgysynda açylyp, gözleg sahypasynda programma adyny ýazyp link almak, nusgalmak we Play-da göni açmak mümkin. Bellenilen programmalaryň sanawy hem sahypada görkezilýär.
+
+Awtomatiki link şeýle ulanylýar: `https://play.google.com/store/apps/details?id=<paket-ady>`. Ýörite goşmaçy belli programmalar üçin paket adylar [`zippy/playmarket.py`](zippy/playmarket.py) dolandyryşynda saklanýar.
+
+---
+
 ## 🛠️ Gurluşy
 
 ```text
@@ -96,11 +118,12 @@ Zippy/
 ├── config/
 │   ├── sources.json        # Çeşmeler, çäkler we Happ profil sazlamalary
 │   └── custom_nodes.txt    # Öz goşýan şahsy serwer açarlaryňyz
-├── zippy/                  # Parser, howpsuzlyk süzgüji, Xray barlagçy we eksporter
+├── zippy/                  # Parser, howpsuzlyk süzgüji, Xray barlagçy, eksporter we Play Market link moduly
 ├── scripts/
 │   ├── update_subs.py      # Abunalary täzeleýän esasy skript
-│   └── serve_panel.py      # Web Paneli lokal/göni görmek üçin HTTP serwer
+│   ├── serve_panel.py      # Web Paneli lokal/göni görmek üçin HTTP serwer
+│   └── play_market_link.py # Play Market link ýasaýjy (CLI)
 ├── sub/                    # Happ üçin taýýar abuna faýllary
-├── docs/                   # Android üçin türkmen dilindäki Web Panel + QR generator
+├── docs/                   # Android üçin türkmen dilindäki Web Panel + Play Market link ýasaýjy
 └── tests/                  # Awtomatiki testler
 ```

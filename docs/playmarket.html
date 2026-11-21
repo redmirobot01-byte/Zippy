@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="tk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#080d14">
+  <meta name="description" content="Zippy VPN — Play Market (Google Play) programma link ýasaýjy. Programmanyň adyndan ýa-da paket adyndan Play sowda linkini ýasamaýar.">
+  <title>Play Market Link — Zippy VPN</title>
+  <link rel="stylesheet" href="./style.css">
+  <style>
+    /* Play Market sahypasy üçin ýörite üýtgeşmeler (esas panele täsirsiz) */
+    .pm-input {
+      width: 100%;
+      min-height: 52px;
+      padding: 13px 16px;
+      font: inherit;
+      font-size: 1rem;
+      color: var(--text);
+      background: var(--bg-input);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      outline: none;
+      transition: border-color 0.15s ease;
+    }
+    .pm-input:focus {
+      border-color: var(--border-strong);
+    }
+    .pm-input::placeholder {
+      color: var(--text-dim);
+    }
+    .pm-row {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .pm-row .pm-input {
+      flex: 1;
+      min-width: 0;
+      min-height: 46px;
+      font-size: 0.85rem;
+      font-family: var(--font-mono);
+    }
+    .pm-row .btn {
+      min-height: 46px;
+      white-space: nowrap;
+    }
+    .pm-result[hidden] {
+      display: none;
+    }
+    .pm-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .pm-app-name {
+      font-weight: 780;
+      font-size: 1rem;
+    }
+    .pm-package {
+      font-family: var(--font-mono);
+      font-size: 0.77rem;
+      color: var(--text-muted);
+    }
+    .pm-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .pm-actions .btn {
+      min-height: 44px;
+    }
+    .pm-error {
+      margin-top: 12px;
+      padding: 10px 14px;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(248, 113, 113, 0.35);
+      background: rgba(248, 113, 113, 0.1);
+      color: #fca5a5;
+      font-size: 0.85rem;
+    }
+    .pm-error[hidden] {
+      display: none;
+    }
+    .app-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 13px 14px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      background: var(--bg-card);
+      margin-bottom: 8px;
+      transition: border-color 0.15s ease;
+    }
+    .app-row:hover {
+      border-color: var(--border-strong);
+    }
+    .app-row-main {
+      min-width: 0;
+      flex: 1;
+    }
+    .app-row-name {
+      font-weight: 700;
+      font-size: 0.94rem;
+    }
+    .app-row-note {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell topbar-inner">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z"/>
+          </svg>
+        </div>
+        <div>
+          <div class="brand-title">Zippy VPN</div>
+          <div class="brand-sub">Play Market link ýasaýjy</div>
+        </div>
+      </div>
+      <a class="icon-link" href="./index.html" aria-label="Esasy panel" title="Esasy panel">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+      </a>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section class="hero" aria-labelledby="pmTitle">
+      <div class="hero-head">
+        <div>
+          <h1 id="pmTitle">Play Market link ýasaýjy</h1>
+          <p class="hero-desc">Programmanyň adyny ýazyň (mysal: happ) — Google Play Market-de açylýan sowda linkini awtomatiki ýasamaýar. Ýa-da islendik Android paket adyny giriziň.</p>
+        </div>
+      </div>
+
+      <label class="mirror-label" for="pmSearch">Programmanyň ady boýunça gözleg:</label>
+      <input class="pm-input" id="pmSearch" type="search" autocomplete="off"
+             placeholder="Mysal: happ, v2rayng, hiddify, clash ...">
+
+      <div class="pm-row">
+        <label class="mirror-label" for="pmPackage" style="align-self: center; margin: 0; flex: 1;">Ýa-da paket ady:</label>
+        <input class="pm-input" id="pmPackage" type="text" autocomplete="off"
+               placeholder="com.example.app" style="margin: 0;">
+        <button type="button" class="btn btn-secondary" id="pmPackageBtn">Link ýasa</button>
+      </div>
+
+      <div class="mirror-pills" id="pmChips" style="margin-top: 12px;" role="group" aria-label="Mähirli programmalar"></div>
+
+      <div class="pm-result" id="pmResult" hidden style="margin-top: 14px;">
+        <div class="pm-meta">
+          <div>
+            <div class="pm-app-name" id="pmAppName"></div>
+            <div class="pm-package" id="pmPackageText"></div>
+          </div>
+        </div>
+        <div class="url-box">
+          <code class="url-text" id="pmLink"></code>
+        </div>
+        <div class="pm-actions">
+          <a class="btn btn-primary" id="pmOpen" href="#" target="_blank" rel="noopener noreferrer">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+              <polyline points="15 3 21 3 21 9"/>
+              <line x1="10" y1="14" x2="21" y2="3"/>
+            </svg>
+            <span>Play-da aç</span>
+          </a>
+          <button type="button" class="btn btn-secondary" id="pmCopy">Linki nusgala</button>
+        </div>
+      </div>
+
+      <div class="pm-error" id="pmError" hidden></div>
+    </section>
+
+    <div class="section-label">Belli programmalar</div>
+    <div id="pmAppList"></div>
+
+    <footer class="footer">
+      Zippy VPN · Play Market link ýasaýjy ·
+      <a href="https://github.com/redmirobot01-byte/Zippy" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="./playmarket.js"></script>
+</body>
+</html>
