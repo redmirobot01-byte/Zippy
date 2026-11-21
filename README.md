@@ -96,13 +96,22 @@ Programmanyň adyndan (ýa-da islendik Android paket adyndan) Google **Play Mark
 python3 scripts/play_market_link.py happ          # → Happ VPN üçin Play Market linki
 python3 scripts/play_market_link.py v2rayng       # → v2rayNG üçin
 python3 scripts/play_market_link.py --id com.v2ray.ng   # → islendik paket ady üçin
-python3 scripts/play_market_link.py --list        # → belli programmalaryň sanawy
+python3 scripts/play_market_link.py --list        # → belli programmalar (VPN + AI)
 python3 scripts/play_market_link.py cloudflare --json --open
+```
+
+**🤖 AI akylly gözleg (CLI):** islendik programmanyň adyny AI-a berip paket adyny tapdyryp bilersiňiz. Açar özüňiz sazlaýarsyňyz, gizlenilýär:
+
+```text
+export ZIPPY_AI_API_KEY="sk-..."                # ýa-da OPENAI_API_KEY
+export ZIPPY_AI_BASE_URL="https://api.openai.com/v1"   # OpenRouter/Groq/lokal ulag hem mümkin
+export ZIPPY_AI_MODEL="gpt-4o-mini"
+python3 scripts/play_market_link.py "ise_bolyan_programma" --ai
 ```
 
 **🌐 Web sahypa (GitHub Pages bilen ýaýraýar):**
 
-Panel ýaýrandan soň **`https://redmirobot01-byte.github.io/Zippy/playmarket.html`** salgysynda açylyp, gözleg sahypasynda programma adyny ýazyp link almak, nusgalmak we Play-da göni açmak mümkin. Bellenilen programmalaryň sanawy hem sahypada görkezilýär.
+Panel ýaýrandan soň **`https://redmirobot01-byte.github.io/Zippy/playmarket.html`** salgysynda açylyp, gözleg sahypasynda programma adyny ýazyp link almak, nusgalmak we Play-da göni açmak mümkin. **«🤖 AI akylly gözleg»** düwmesini açyp, öz API açaryňyzy giriziň (açar brauzerde galýar, hiç ýerde saklanmaýar) — islendik programmanyň ady boýunça AI-a gözleýär. Bellenilen programmalar (VPN/Happ + **ChatGPT, Gemini, Copilot, Perplexity, Claude** ýaly AI programmalary) sanawda we düwmelerde görkezilýär.
 
 Awtomatiki link şeýle ulanylýar: `https://play.google.com/store/apps/details?id=<paket-ady>`. Ýörite goşmaçy belli programmalar üçin paket adylar [`zippy/playmarket.py`](zippy/playmarket.py) dolandyryşynda saklanýar.
 

@@ -13,7 +13,11 @@ birleşdirýäris.
 
 from __future__ import annotations
 
+import json
+import os
 import re
+import urllib.error
+import urllib.request
 
 PLAY_STORE_BASE = "https://play.google.com/store/apps/details"
 
@@ -75,6 +79,37 @@ APPS: tuple[dict, ...] = (
         "aliases": ("cloudflare", "1111", "one one one"),
         "note": "Cloudflare-iň çalt DNS we VPN ulanylyşy",
     },
+    # --- AI programmalary ---
+    {
+        "name": "ChatGPT",
+        "package": "com.openai.chatgpt",
+        "aliases": ("chatgpt", "openai", "gpt"),
+        "note": "OpenAI-yň söhbetdeşlik AI programmasy",
+    },
+    {
+        "name": "Gemini",
+        "package": "com.google.ai.gemini",
+        "aliases": ("gemini", "google gemini", "ai gemini"),
+        "note": "Google-yň ýokary AI söhbetdeşligi",
+    },
+    {
+        "name": "Microsoft Copilot",
+        "package": "com.microsoft.copilot",
+        "aliases": ("copilot", "ms copilot", "microsoft copilot"),
+        "note": "Microsoft-yň AI kömekçisi",
+    },
+    {
+        "name": "Perplexity",
+        "package": "com.perplexity.ai",
+        "aliases": ("perplexity",),
+        "note": "Sorag-jogap AI we gözleg",
+    },
+    {
+        "name": "Claude",
+        "package": "com.anthropic.claude",
+        "aliases": ("claude", "anthropic"),
+        "note": "Anthropic-iň Claude AI söhbetdeşligi",
+    },
 )
 
 _PACKAGE_RE = re.compile(r"^[A-Za-z0-9_]+(\.[A-Za-z0-9_]+)+$")
@@ -129,8 +164,12 @@ def find_apps(query: str) -> list[dict]:
     return [app for _, app in scored]
 
 
-def resolve(query: str) -> tuple[dict | None, str | None]:
+def resolve(query: str, use_ai: bool = False) -> tuple[dict | None, str | None]:
     """Bir söz boýunça link ýasamagy çözýär.
+
+    ``use_ai=True`` bolsa, ilkinji AI akylly gözlegden geçirýär: programmanyň
+    adyny AI-a berip, Play Market-däki paket adyny tapdyryp link ýasamaýar.
+    AI jobaýyşy bolmasa ýa-da tapyp bilmese, ýerli registre geçýär.
 
     Sargyt paket ady görnüşinde bolsa, registry-ni gözden geçirmezden link
     ýasamaýar. Düzgünli tapylan programma üçin ``(app, link)``, tapylyp
@@ -146,11 +185,95 @@ def resolve(query: str) -> tuple[dict | None, str | None]:
         except ValueError:
             return None, None
 
+    if use_ai:
+        package = ai_lookup(query)
+        if package:
+            return None, build_play_link(package)
+
     apps = find_apps(query)
     if not apps:
         return None, None
     app = apps[0]
     return app, build_play_link(app["package"])
+
+
+# ---------------------------------------------------------------------------
+# AI akylly gözleg (OpenAI-niň Chat Completions API-si, ýa-da şonuň bilen
+# işleýän islendik ulag: OpenRouter, Groq, Ollama, LocalAI ...)
+#
+# API açaryny adatça dal gizläp saklanýar: şu üýtgetmeleri ulanyň:
+#   ZIPPY_AI_API_KEY   (ýa-da OPENAI_API_KEY)
+#   ZIPPY_AI_BASE_URL  (default: https://api.openai.com/v1)
+#   ZIPPY_AI_MODEL     (default: gpt-4o-mini)
+# ---------------------------------------------------------------------------
+
+_AI_SYSTEM_PROMPT = (
+    "Sen Android programmalarynyň Google Play Market-däki paket adyny "
+    "tapýan kömekçisің. Adaty nädogry sözler, baglanyşyklar ýa-da şerhler "
+    "ýazma. Jogabyň diňe paýlaşyk görünüşi bolmaly, mysal üçin "
+    "com.example.app. Nädogry bolsa, jogap bermekden ýeňrel."
+)
+
+
+def ai_settings() -> dict | None:
+    """AI ulanmak üçin sazlamalar. Açary bolmasa ``None`` gaýtarýar."""
+    api_key = os.environ.get("ZIPPY_AI_API_KEY") or os.environ.get("OPENAI_API_KEY")
+    if not api_key:
+        return None
+    return {
+        "api_key": api_key,
+        "base_url": os.environ.get("ZIPPY_AI_BASE_URL", "https://api.openai.com/v1").rstrip("/"),
+        "model": os.environ.get("ZIPPY_AI_MODEL", "gpt-4o-mini"),
+    }
+
+
+def parse_ai_package(text: str) -> str | None:
+    """AI jogabyndaky paket adyny aýyryp alýar (ýalňyş sözler gerisinde)."""
+    match = re.search(r"[A-Za-z0-9_]+(?:\.[A-Za-z0-9_]+)+", (text or "").strip())
+    return match.group(0) if match else None
+
+
+def ai_lookup(app_name: str, timeout: float = 20.0) -> str | None:
+    """Programmanyň adyny AI-a berip Play Market paket adyny tapýar.
+
+    Açar sazlanmadyk, API hata berende ýa-da AI paket görnüşinde
+    jogap bermedikde ``None`` gaýtarýar.
+    """
+    config = ai_settings()
+    if not config:
+        return None
+
+    body = {
+        "model": config["model"],
+        "temperature": 0,
+        "max_tokens": 20,
+        "messages": [
+            {"role": "system", "content": _AI_SYSTEM_PROMPT},
+            {
+                "role": "user",
+                "content": f"Google Play Market programmasynyň ady: {app_name}",
+            },
+        ],
+    }
+    request = urllib.request.Request(
+        url=f"{config['base_url']}/chat/completions",
+        data=json.dumps(body).encode("utf-8"),
+        headers={
+            "Content-Type": "application/json",
+            "Authorization": f"Bearer {config['api_key']}",
+        },
+        method="POST",
+    )
+    try:
+        with urllib.request.urlopen(request, timeout=timeout) as response:
+            data = json.loads(response.read().decode("utf-8"))
+        package = parse_ai_package(data["choices"][0]["message"]["content"])
+    except (urllib.error.URLError, OSError, ValueError, KeyError, IndexError):
+        return None
+
+    if package and is_package_id(package):
+        return package
+    return None
 
 
 def format_result(app: dict, link: str) -> str:

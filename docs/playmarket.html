@@ -44,6 +44,16 @@
       min-height: 46px;
       white-space: nowrap;
     }
+    .pm-ai-settings {
+      margin-top: 10px;
+      padding: 12px;
+      border: 1px dashed var(--border);
+      border-radius: var(--radius-md);
+      background: rgba(56, 189, 248, 0.05);
+    }
+    .pm-ai-settings[hidden] {
+      display: none;
+    }
     .pm-result[hidden] {
       display: none;
     }
@@ -158,6 +168,22 @@
       </div>
 
       <div class="mirror-pills" id="pmChips" style="margin-top: 12px;" role="group" aria-label="Mähirli programmalar"></div>
+
+      <div class="pm-row" style="margin-top: 12px; align-items: center;">
+        <button type="button" class="pill" id="pmAiToggle" aria-pressed="false" title="Programmanyň adyny AI-a berip, Play Market-däki paket adyny tapdyryp link ýasamaýar">🤖 AI akylly gözleg</button>
+      </div>
+      <div class="pm-ai-settings" id="pmAiSettings" hidden>
+        <label class="mirror-label" for="pmAiKey">API açary (brauzerde galýar, çykarylmaýar):</label>
+        <input class="pm-input" id="pmAiKey" type="password" autocomplete="off" placeholder="sk-...">
+        <div class="pm-row" style="margin-top: 8px;">
+          <input class="pm-input" id="pmAiBase" type="text" value="https://api.openai.com/v1" aria-label="AI ulag salgysy">
+          <input class="pm-input" id="pmAiModel" type="text" value="gpt-4o-mini" aria-label="AI model">
+        </div>
+        <p style="margin: 8px 0 0; font-size: 0.75rem; color: var(--text-dim);">
+          Açar OpenAI-de çalşyp bolýar: ulag salgysyny (OpenRouter, Groq, lokal ulag) we modeli üýtgediň. Açar ýokary bolsa,
+          ýerli registre düşýär.
+        </p>
+      </div>
 
       <div class="pm-result" id="pmResult" hidden style="margin-top: 14px;">
         <div class="pm-meta">

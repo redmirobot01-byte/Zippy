@@ -12,6 +12,7 @@ Mysallar:
     python3 scripts/play_market_link.py --id com.v2ray.ng
     python3 scripts/play_market_link.py --list
     python3 scripts/play_market_link.py cloudflare --json
+    python3 scripts/play_market_link.py "my app" --ai   # AI akylly gözleg
 """
 
 from __future__ import annotations
@@ -27,6 +28,7 @@ sys.path.insert(0, str(ROOT_DIR))
 
 from zippy.playmarket import (  # noqa: E402
     APPS,
+    ai_settings,
     build_play_link,
     format_result,
     resolve,
@@ -63,6 +65,11 @@ def main() -> int:
         action="store_true",
         help="Brauzerde linki göni açýar",
     )
+    parser.add_argument(
+        "--ai",
+        action="store_true",
+        help="AI akylly gözleg (paket adyny AI tapýar). Açar ZIPPY_AI_API_KEY bilen sazlanmaly",
+    )
     args = parser.parse_args()
 
     if args.list:
@@ -78,7 +85,13 @@ def main() -> int:
         app = None
         result = {"app": None, "package": args.package, "link": link}
     elif args.query:
-        app, link = resolve(args.query)
+        if args.ai and not ai_settings():
+            print(
+                "AI akylly gözleg üçin açar gerek: ZIPPY_AI_API_KEY (ýa-da OPENAI_API_KEY) "
+                "üýtgetmesini ulanyň. İndiden ýerli registre gözlener.",
+                file=sys.stderr,
+            )
+        app, link = resolve(args.query, use_ai=args.ai)
         if link is None:
             print(
                 f"Tapylmady: {args.query!r}. Gözleg sahypasynda sanawy --list bilen görkeziň, "

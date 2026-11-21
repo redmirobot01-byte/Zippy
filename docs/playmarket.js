@@ -4,6 +4,11 @@
 
   const PLAY_STORE_BASE = "https://play.google.com/store/apps/details";
 
+  const AI_SYSTEM_PROMPT =
+    "Sen Android programmalarynyň Google Play Market-däki paket adyny tapýan kömekçisің. " +
+    "Adaty nädogry sözler, baglanyşyklar ýa-da şerhler ýazma. Jogabyň diňe paýlaşyk görünüşi " +
+    "bolmaly, mysal üçin com.example.app. Nädogry bolsa, jogap bermekden ýeňrel.";
+
   /* Python moduly zippy/playmarket.py-daky registr bilen deňleşýär. */
   const APPS = [
     { name: "Happ VPN", package: "com.happproxy", note: "Zippy VPN abunalary bilen işleýän Happ VPN klienti" },
@@ -14,10 +19,16 @@
     { name: "ClashMetaForAndroid", package: "com.meta.clash", note: "Müşderi meseleleri üçin Clash Meta görnüşi" },
     { name: "Shadowsocks", package: "com.shadowsocks", note: "Shadowsocks-yň resmi Android klienti" },
     { name: "WireGuard", package: "com.wireguard.android", note: "WireGuard VPN-iň resmi Android klienti" },
-    { name: "1.1.1.1 (Cloudflare)", package: "com.cloudflare.1111", note: "Cloudflare-iň çalt DNS we VPN ulanylyşy" }
+    { name: "1.1.1.1 (Cloudflare)", package: "com.cloudflare.1111", note: "Cloudflare-iň çalt DNS we VPN ulanylyşy" },
+    // --- AI programmalary ---
+    { name: "ChatGPT", package: "com.openai.chatgpt", note: "OpenAI-yň söhbetdeşlik AI programmasy" },
+    { name: "Gemini", package: "com.google.ai.gemini", note: "Google-yň ýokary AI söhbetdeşligi" },
+    { name: "Microsoft Copilot", package: "com.microsoft.copilot", note: "Microsoft-yň AI kömekçisi" },
+    { name: "Perplexity", package: "com.perplexity.ai", note: "Sorag-jogap AI we gözleg" },
+    { name: "Claude", package: "com.anthropic.claude", note: "Anthropic-iň Claude AI söhbetdeşligi" }
   ];
 
-  const STATE = { current: null };
+  const STATE = { current: null, aiOn: false };
 
   const $ = (id) => document.getElementById(id);
   const els = {
@@ -33,6 +44,11 @@
     open: $("pmOpen"),
     copy: $("pmCopy"),
     list: $("pmAppList"),
+    aiToggle: $("pmAiToggle"),
+    aiSettings: $("pmAiSettings"),
+    aiKey: $("pmAiKey"),
+    aiBase: $("pmAiBase"),
+    aiModel: $("pmAiModel"),
     toast: $("toast")
   };
 
@@ -78,6 +94,35 @@
     return PLAY_STORE_BASE + "?id=" + encodeURIComponent(packageName);
   }
 
+  /* AI akylly gözleg: programma adyny AI-a berip paket adyny tapýar.
+     API açary ýeke-ýeke brauzerde galýar, servera iberilýär (local sazlama). */
+  async function aiLookup(name, apiKey, baseUrl, model) {
+    const response = await fetch(baseUrl.replace(/\/$/, "") + "/chat/completions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + apiKey
+      },
+      body: JSON.stringify({
+        model: model || "gpt-4o-mini",
+        temperature: 0,
+        max_tokens: 20,
+        messages: [
+          { role: "system", content: AI_SYSTEM_PROMPT },
+          { role: "user", content: "Google Play Market programmasynyň ady: " + name }
+        ]
+      })
+    });
+    if (!response.ok) {
+      const detail = await response.text().catch(() => "");
+      throw new Error("API " + response.status + " hatasy" + (detail ? ": " + detail.slice(0, 160) : ""));
+    }
+    const data = await response.json();
+    const text = (data.choices && data.choices[0] && data.choices[0].message && data.choices[0].message.content) || "";
+    const match = text.match(/[A-Za-z0-9_]+(?:\.[A-Za-z0-9_]+)+/);
+    return match ? match[0] : null;
+  }
+
   const PACKAGE_RE = /^[A-Za-z0-9_]+(\.[A-Za-z0-9_]+)+$/;
 
   function isPackageId(text) {
@@ -107,17 +152,17 @@
     els.error.hidden = false;
   }
 
-  function renderResult(app, link, packageName) {
+  function renderResult(app, link, packageName, displayName) {
     STATE.current = link;
     els.result.hidden = false;
-    els.appName.textContent = app ? app.name : "Play Market programmasy";
+    els.appName.textContent = displayName || (app ? app.name : "Play Market programmasy");
     els.packageText.textContent = "id=" + packageName;
     els.link.textContent = link;
     els.open.href = link;
     hideError();
   }
 
-  function resolveSearch(query) {
+  async function resolveSearch(query) {
     const text = (query || "").trim();
     if (!text) {
       hideError();
@@ -126,6 +171,24 @@
     if (isPackageId(text)) {
       renderResult(null, buildLink(text), text);
       return;
+    }
+    if (STATE.aiOn) {
+      const apiKey = els.aiKey.value.trim();
+      if (!apiKey) {
+        els.result.hidden = true;
+        showError("AI akylly gözleg üçin açary giriziň (saýlaw sahypasyndaky «🤖 AI» düwmesinden soň görünýän meýdança).");
+        return;
+      }
+      try {
+        const packageName = await aiLookup(text, apiKey, els.aiBase.value.trim() || "https://api.openai.com/v1", els.aiModel.value.trim());
+        if (packageName) {
+          renderResult(null, buildLink(packageName), packageName, text);
+          return;
+        }
+        showToast("AI paketi tapmady — ýerli registre geçýär");
+      } catch (err) {
+        showToast("AI hata: " + err.message + " — ýerli registre geçýär");
+      }
     }
     const apps = findApps(text);
     if (!apps.length) {
@@ -139,7 +202,7 @@
   }
 
   function renderChips() {
-    APPS.slice(0, 6).forEach((app) => {
+    APPS.forEach((app) => {
       const btn = document.createElement("button");
       btn.type = "button";
       btn.className = "pill";
@@ -196,6 +259,21 @@
     if (STATE.current) copyText(STATE.current, "✓ Play Market linki nusgalandy!");
   });
 
+  els.aiToggle.addEventListener("click", () => {
+    STATE.aiOn = !STATE.aiOn;
+    els.aiToggle.classList.toggle("active", STATE.aiOn);
+    els.aiSettings.hidden = !STATE.aiOn;
+    if (STATE.aiOn) els.aiKey.focus();
+    hideError();
+  });
+  els.aiKey.addEventListener("input", () => {
+    if (els.aiKey.value.trim()) sessionStorage.setItem("zippy_ai_key", els.aiKey.value.trim());
+    else sessionStorage.removeItem("zippy_ai_key");
+  });
+
   renderChips();
   renderAppList();
+
+  // Üýtgeşmeleri gaýtadan açanyňda açary ýatda sakla
+  els.aiKey.value = sessionStorage.getItem("zippy_ai_key") || "";
 })();
