@@ -3,15 +3,10 @@
 #subscription-userinfo: upload=0; download=0; total=0; expire=0
 #profile-web-page-url: https://redmirobot01-byte.github.io/Zippy/
 #announce: base64:4pqhIFppcHB5IFZQTiDigJQgR2l0SHViIGFya2FseSBhd3RvLXTDpHplbGVuw73DpHIgKEhhcHAgQW5kcm9pZCk=
-# Zippy VPN | Updated: 2026-11-21 02:29 UTC | Nodes: 11
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@193.108.119.78:443?security=tls&type=tcp&sni=www.iloverussia2026.com&fp=chrome#%F0%9F%87%A9%F0%9F%87%AA%20DE%20%C2%B7%20TROJAN%20%C2%B7%20275ms%20%C2%B7%20Zippy%20%2301
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@193.108.119.34:443?security=tls&type=tcp&sni=cdn.iloverussia2026.com&fp=chrome#%F0%9F%87%A9%F0%9F%87%AA%20DE%20%C2%B7%20TROJAN%20%C2%B7%20279ms%20%C2%B7%20Zippy%20%2302
-trojan://dba20dcb635e430fa4d3bfc303a149d2@216.106.186.32:443?security=tls&type=tcp&sni=blog.findlocaljobnetworkandbuildcommunityconnections.com&fp=chrome#%F0%9F%87%BA%F0%9F%87%B8%20US%20%C2%B7%20TROJAN%20%C2%B7%20192ms%20%C2%B7%20Zippy%20%2303
-trojan://242a3d8eee5e4ed1a6bfa4141d549a25@216.106.186.66:443?security=tls&type=tcp&sni=www.findlocaljobnetworkandbuildcommunityconnections.com&fp=chrome#%F0%9F%87%BA%F0%9F%87%B8%20US%20%C2%B7%20TROJAN%20%C2%B7%20198ms%20%C2%B7%20Zippy%20%2304
-trojan://f0eb8c92ce8946aaba856569cff1a16b@216.106.186.33:443?security=tls&type=tcp&sni=resources.findlocaljobnetworkandbuildcommunityconnections.com&fp=chrome#%F0%9F%87%BA%F0%9F%87%B8%20US%20%C2%B7%20TROJAN%20%C2%B7%20198ms%20%C2%B7%20Zippy%20%2305
-trojan://242a3d8eee5e4ed1a6bfa4141d549a25@www.findlocaljobnetworkandbuildcommunityconnections.com:443?security=tls&type=tcp&sni=www.findlocaljobnetworkandbuildcommunityconnections.com&fp=chrome#%F0%9F%87%BA%F0%9F%87%B8%20US%20%C2%B7%20TROJAN%20%C2%B7%20244ms%20%C2%B7%20Zippy%20%2306
-trojan://f0eb8c92ce8946aaba856569cff1a16b@resources.findlocaljobnetworkandbuildcommunityconnections.com:443?security=tls&type=tcp&sni=resources.findlocaljobnetworkandbuildcommunityconnections.com&fp=chrome#%F0%9F%87%BA%F0%9F%87%B8%20US%20%C2%B7%20TROJAN%20%C2%B7%20208ms%20%C2%B7%20Zippy%20%2307
-trojan://dba20dcb635e430fa4d3bfc303a149d2@blog.findlocaljobnetworkandbuildcommunityconnections.com:443?security=tls&type=tcp&sni=blog.findlocaljobnetworkandbuildcommunityconnections.com&fp=chrome#%F0%9F%87%BA%F0%9F%87%B8%20US%20%C2%B7%20TROJAN%20%C2%B7%20251ms%20%C2%B7%20Zippy%20%2308
-trojan://trojan@104.18.35.86:8443?security=tls&type=ws&sni=longwanghen.pages.dev&fp=chrome&path=%2F&host=longwanghen.pages.dev#%F0%9F%87%AC%F0%9F%87%A7%20GB%20%C2%B7%20TROJAN%20%C2%B7%20181ms%20%C2%B7%20Zippy%20%2309
-trojan://FkQH0Q5EFneySv20Qj3yoArD2GSb2XZF@95.143.196.97:443?security=tls&type=tcp&sni=connect-se.mimowhat.online&fp=chrome&alpn=h2%2Chttp%2F1.1#%F0%9F%87%B8%F0%9F%87%AA%20SE%20%C2%B7%20TROJAN%20%C2%B7%20348ms%20%C2%B7%20Zippy%20%2310
-trojan://d0298536-d670-4045-bbb1-ddd5ea68683e@104.19.173.68:443?security=tls&type=ws&sni=azadnet-5vk.pages.dev&fp=chrome&path=%2Fazadnet-5vk.pages.dev%2F%3Fed%3D2560%26PROT_TYPE%3Dtrojan&host=azadnet-5vk.pages.dev#%F0%9F%87%AC%F0%9F%87%A7%20GB%20%C2%B7%20TROJAN%20%C2%B7%20278ms%20%C2%B7%20Zippy%20%2311
+# Zippy VPN | Updated: 2026-11-21 11:25 UTC | Nodes: 6
+trojan://f0eb8c92ce8946aaba856569cff1a16b@216.106.186.33:443?security=tls&type=tcp&sni=resources.findlocaljobnetworkandbuildcommunityconnections.com&fp=chrome#%F0%9F%87%BA%F0%9F%87%B8%20US%20%C2%B7%20TROJAN%20%C2%B7%20171ms%20%C2%B7%20Zippy%20%2301
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@193.108.119.78:443?security=tls&type=tcp&sni=www.iloverussia2026.com&fp=chrome#%F0%9F%87%A9%F0%9F%87%AA%20DE%20%C2%B7%20TROJAN%20%C2%B7%20454ms%20%C2%B7%20Zippy%20%2302
+trojan://123456@34.80.15.95:443?security=tls&type=tcp&sni=tw.ctt25.uk&fp=chrome#%F0%9F%87%B9%F0%9F%87%BC%20TW%20%C2%B7%20TROJAN%20%C2%B7%20398ms%20%C2%B7%20Zippy%20%2303
+trojan://dba20dcb635e430fa4d3bfc303a149d2@blog.findlocaljobnetworkandbuildcommunityconnections.com:443?security=tls&type=tcp&sni=blog.findlocaljobnetworkandbuildcommunityconnections.com&fp=chrome#%F0%9F%87%BA%F0%9F%87%B8%20US%20%C2%B7%20TROJAN%20%C2%B7%20569ms%20%C2%B7%20Zippy%20%2304
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@193.108.119.15:443?security=tls&type=tcp&sni=courses.iloverussia2026.com&fp=chrome#%F0%9F%87%A9%F0%9F%87%AA%20DE%20%C2%B7%20TROJAN%20%C2%B7%201505ms%20%C2%B7%20Zippy%20%2305
+trojan://HAB6WFjL2pKev0cN3ML1hz6V4pj1_S00@170.168.5.123:8228?security=tls&type=grpc&sni=nl100.marshonet.store&fp=chrome&serviceName=trgrpc&mode=gun&alpn=h2#%F0%9F%87%B3%F0%9F%87%B1%20NL%20%C2%B7%20TROJAN%20%C2%B7%202814ms%20%C2%B7%20Zippy%20%2306
