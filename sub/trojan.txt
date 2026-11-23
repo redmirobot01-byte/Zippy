@@ -3,10 +3,12 @@
 #subscription-userinfo: upload=0; download=0; total=0; expire=0
 #profile-web-page-url: https://redmirobot01-byte.github.io/Zippy/
 #announce: base64:4pqhIFppcHB5IFZQTiDigJQgR2l0SHViIGFya2FseSBhd3RvLXTDpHplbGVuw73DpHIgKEhhcHAgQW5kcm9pZCk=
-# Zippy VPN | Updated: 2026-11-22 19:51 UTC | Nodes: 6
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@167.88.61.85:443?security=tls&type=tcp&sni=resources.browseseniorrolesandenhanceyourcareertoday.com&fp=chrome#%F0%9F%87%BA%F0%9F%87%B8%20US%20%C2%B7%20TROJAN%20%C2%B7%20267ms%20%C2%B7%20Zippy%20%2301
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@167.88.61.52:443?security=tls&type=tcp&sni=courses.browseseniorrolesandenhanceyourcareertoday.com&fp=chrome#%F0%9F%87%BA%F0%9F%87%B8%20US%20%C2%B7%20TROJAN%20%C2%B7%20354ms%20%C2%B7%20Zippy%20%2302
-trojan://57beeeb0-03fc-4fc9-94da-7604488a7134@dg4.ianai.it.com:443?security=tls&type=tcp&sni=dg4.ianai.it.com&fp=chrome#%F0%9F%87%AF%F0%9F%87%B5%20JP%20%C2%B7%20TROJAN%20%C2%B7%20599ms%20%C2%B7%20Zippy%20%2303
-trojan://123456@34.80.15.95:443?security=tls&type=tcp&sni=tw.ctt25.uk&fp=chrome#%F0%9F%87%B9%F0%9F%87%BC%20TW%20%C2%B7%20TROJAN%20%C2%B7%20727ms%20%C2%B7%20Zippy%20%2304
-trojan://463f7453753f4d47@168.107.51.32:20045?security=tls&type=tcp&sni=ikr200.zxom.eu.org&fp=chrome#%F0%9F%87%B0%F0%9F%87%B7%20KR%20%C2%B7%20TROJAN%20%C2%B7%20679ms%20%C2%B7%20Zippy%20%2305
-trojan://463f7453753f4d47@ikr200.zxom.eu.org:20045?security=tls&type=tcp&sni=ikr200.zxom.eu.org&fp=chrome#%F0%9F%87%B0%F0%9F%87%B7%20KR%20%C2%B7%20TROJAN%20%C2%B7%20943ms%20%C2%B7%20Zippy%20%2306
+# Zippy VPN | Updated: 2026-11-23 01:50 UTC | Nodes: 8
+trojan://bpb-trojan@russia.com:443?security=tls&type=ws&sni=kargar001.pages.dev&fp=chrome&path=%2Ftr%3Fed%3D2560&host=kargar001.pages.dev#%F0%9F%87%A8%F0%9F%87%A6%20CA%20%C2%B7%20TROJAN%20%C2%B7%20105ms%20%C2%B7%20Zippy%20%2301
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.127.44:443?security=tls&type=tcp&sni=learn.indyourperfectremotetechjobfromthecomfortofhome.com&fp=chrome#%F0%9F%87%B3%F0%9F%87%B1%20NL%20%C2%B7%20TROJAN%20%C2%B7%20352ms%20%C2%B7%20Zippy%20%2302
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.127.107:443?security=tls&type=tcp&sni=blog.indyourperfectremotetechjobfromthecomfortofhome.com&fp=chrome#%F0%9F%87%B3%F0%9F%87%B1%20NL%20%C2%B7%20TROJAN%20%C2%B7%20360ms%20%C2%B7%20Zippy%20%2303
+trojan://c28c26d4522c57011802cfc24216803c@rebecca.nikanesalamat.ir:8443?security=tls&type=tcp&sni=rebecca.nikanesalamat.ir&fp=chrome#%F0%9F%87%BA%F0%9F%87%B8%20US%20%C2%B7%20TROJAN%20%C2%B7%20154ms%20%C2%B7%20Zippy%20%2304
+trojan://57beeeb0-03fc-4fc9-94da-7604488a7134@dg4.ianai.it.com:443?security=tls&type=tcp&sni=dg4.ianai.it.com&fp=chrome#%F0%9F%87%AF%F0%9F%87%B5%20JP%20%C2%B7%20TROJAN%20%C2%B7%20486ms%20%C2%B7%20Zippy%20%2305
+trojan://463f7453753f4d47@168.107.51.32:20045?security=tls&type=tcp&sni=ikr200.zxom.eu.org&fp=chrome#%F0%9F%87%B0%F0%9F%87%B7%20KR%20%C2%B7%20TROJAN%20%C2%B7%20603ms%20%C2%B7%20Zippy%20%2306
+trojan://1vkFHbQX_gN1U8V8jVc@104.16.242.176:443?security=tls&type=ws&sni=mhpanel.kigaping.com&fp=edge&path=%2Ftrojan-ws&host=mhpanel.kigaping.com#%F0%9F%87%A9%F0%9F%87%AA%20DE%20%C2%B7%20TROJAN%20%C2%B7%201526ms%20%C2%B7%20Zippy%20%2307
+trojan://1vkFHbQX_gN1U8V8jVc@104.25.211.29:443?security=tls&type=ws&sni=mhpanel.kigaping.com&fp=chrome&path=%2Ftrojan-ws&host=mhpanel.kigaping.com#%F0%9F%87%A9%F0%9F%87%AA%20DE%20%C2%B7%20TROJAN%20%C2%B7%201470ms%20%C2%B7%20Zippy%20%2308
