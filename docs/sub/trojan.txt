@@ -3,11 +3,6 @@
 #subscription-userinfo: upload=0; download=0; total=0; expire=0
 #profile-web-page-url: https://redmirobot01-byte.github.io/Zippy/
 #announce: base64:4pqhIFppcHB5IFZQTiDigJQgR2l0SHViIGFya2FseSBhd3RvLXTDpHplbGVuw73DpHIgKEhhcHAgQW5kcm9pZCk=
-# Zippy VPN | Updated: 2026-11-24 23:58 UTC | Nodes: 7
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.127.154:443?security=tls&type=tcp&sni=www.indyourperfectremotetechjobfromthecomfortofhome.com&fp=chrome#%F0%9F%87%B3%F0%9F%87%B1%20NL%20%C2%B7%20TROJAN%20%C2%B7%20413ms%20%C2%B7%20Zippy%20%2301
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@66.163.127.225:443?security=tls&type=tcp&sni=cdn.indyourperfectremotetechjobfromthecomfortofhome.com&fp=chrome#%F0%9F%87%B3%F0%9F%87%B1%20NL%20%C2%B7%20TROJAN%20%C2%B7%20424ms%20%C2%B7%20Zippy%20%2302
-trojan://1vkFHbQX_gN1U8V8jVc@104.25.224.90:443?security=tls&type=ws&sni=mhpanel.kigaping.com&fp=chrome&path=%2Ftrojan-ws&host=mhpanel.kigaping.com#%F0%9F%87%A8%F0%9F%87%A6%20CA%20%C2%B7%20TROJAN%20%C2%B7%20940ms%20%C2%B7%20Zippy%20%2303
-trojan://1vkFHbQX_gN1U8V8jVc@104.16.242.176:443?security=tls&type=ws&sni=mhpanel.kigaping.com&fp=edge&path=%2Ftrojan-ws&host=mhpanel.kigaping.com#%F0%9F%87%A9%F0%9F%87%AA%20DE%20%C2%B7%20TROJAN%20%C2%B7%20930ms%20%C2%B7%20Zippy%20%2304
-trojan://57beeeb0-03fc-4fc9-94da-7604488a7134@xvxn1hkzf.mateflora.com:443?security=tls&type=tcp&sni=xvxn1hkzf.mateflora.com&fp=chrome#%F0%9F%87%AD%F0%9F%87%B0%20HK%20%C2%B7%20TROJAN%20%C2%B7%201162ms%20%C2%B7%20Zippy%20%2305
-trojan://57beeeb0-03fc-4fc9-94da-7604488a7134@43.255.157.222:443?security=tls&type=tcp&sni=xvxn1hkzf.mateflora.com&fp=firefox#%F0%9F%87%AD%F0%9F%87%B0%20HK%20%C2%B7%20TROJAN%20%C2%B7%201177ms%20%C2%B7%20Zippy%20%2306
-trojan://123456@34.80.15.95:443?security=tls&type=tcp&sni=tw.ctt25.uk&fp=chrome#%F0%9F%87%B9%F0%9F%87%BC%20TW%20%C2%B7%20TROJAN%20%C2%B7%204837ms%20%C2%B7%20Zippy%20%2307
+# Zippy VPN | Updated: 2026-11-25 08:51 UTC | Nodes: 2
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@167.88.61.20:443?security=tls&type=tcp&sni=api.browseseniorrolesandenhanceyourcareertoday.com&fp=chrome#%F0%9F%87%BA%F0%9F%87%B8%20US%20%C2%B7%20TROJAN%20%C2%B7%20137ms%20%C2%B7%20Zippy%20%2301
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@167.88.61.175:443?security=tls&type=tcp&sni=blog.browseseniorrolesandenhanceyourcareertoday.com&fp=chrome#%F0%9F%87%BA%F0%9F%87%B8%20US%20%C2%B7%20TROJAN%20%C2%B7%20148ms%20%C2%B7%20Zippy%20%2302
