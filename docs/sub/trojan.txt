@@ -3,6 +3,6 @@
 #subscription-userinfo: upload=0; download=0; total=0; expire=0
 #profile-web-page-url: https://redmirobot01-byte.github.io/Zippy/
 #announce: base64:4pqhIFppcHB5IFZQTiDigJQgR2l0SHViIGFya2FseSBhd3RvLXTDpHplbGVuw73DpHIgKEhhcHAgQW5kcm9pZCk=
-# Zippy VPN | Updated: 2026-11-25 08:51 UTC | Nodes: 2
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@167.88.61.20:443?security=tls&type=tcp&sni=api.browseseniorrolesandenhanceyourcareertoday.com&fp=chrome#%F0%9F%87%BA%F0%9F%87%B8%20US%20%C2%B7%20TROJAN%20%C2%B7%20137ms%20%C2%B7%20Zippy%20%2301
-trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@167.88.61.175:443?security=tls&type=tcp&sni=blog.browseseniorrolesandenhanceyourcareertoday.com&fp=chrome#%F0%9F%87%BA%F0%9F%87%B8%20US%20%C2%B7%20TROJAN%20%C2%B7%20148ms%20%C2%B7%20Zippy%20%2302
+# Zippy VPN | Updated: 2026-11-25 19:26 UTC | Nodes: 2
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@167.88.61.193:443?security=tls&type=tcp&sni=browseseniorrolesandenhanceyourcareertoday.com&fp=chrome#%F0%9F%87%BA%F0%9F%87%B8%20US%20%C2%B7%20TROJAN%20%C2%B7%2067ms%20%C2%B7%20Zippy%20%2301
+trojan://0ab6c98dae3b48e8b9c4a776b6c9c19a@167.88.61.52:443?security=tls&type=tcp&sni=courses.browseseniorrolesandenhanceyourcareertoday.com&fp=chrome#%F0%9F%87%BA%F0%9F%87%B8%20US%20%C2%B7%20TROJAN%20%C2%B7%2078ms%20%C2%B7%20Zippy%20%2302
