@@ -1,138 +1,6 @@
 [
   {
-    "remarks": "🛡️ 🇺🇸 US · REALITY · 66ms · Zippy #01",
-    "log": {
-      "loglevel": "warning"
-    },
-    "dns": {
-      "servers": [
-        "https://1.1.1.1/dns-query",
-        "https://8.8.8.8/dns-query",
-        "1.1.1.1"
-      ],
-      "queryStrategy": "UseIPv4"
-    },
-    "inbounds": [
-      {
-        "tag": "socks",
-        "port": 10808,
-        "listen": "127.0.0.1",
-        "protocol": "socks",
-        "sniffing": {
-          "enabled": true,
-          "destOverride": [
-            "http",
-            "tls",
-            "quic"
-          ],
-          "routeOnly": true
-        },
-        "settings": {
-          "auth": "noauth",
-          "udp": true
-        }
-      },
-      {
-        "tag": "http",
-        "port": 10809,
-        "listen": "127.0.0.1",
-        "protocol": "http",
-        "settings": {
-          "allowTransparent": false
-        }
-      }
-    ],
-    "outbounds": [
-      {
-        "tag": "proxy",
-        "protocol": "vless",
-        "settings": {
-          "vnext": [
-            {
-              "address": "47.251.108.158",
-              "port": 443,
-              "users": [
-                {
-                  "id": "975fc322-6e38-434b-a53c-d39fed49b9a9",
-                  "encryption": "none",
-                  "flow": "xtls-rprx-vision"
-                }
-              ]
-            }
-          ]
-        },
-        "streamSettings": {
-          "network": "tcp",
-          "security": "reality",
-          "realitySettings": {
-            "show": false,
-            "fingerprint": "chrome",
-            "serverName": "www.cloudflare.com",
-            "publicKey": "SmgYcFIvvFXW3xh4gvGhIJuQsaZvWkAylcjB6TEddEs",
-            "shortId": "896f52ba2cfca903",
-            "spiderX": "/"
-          },
-          "sockopt": {
-            "dialerProxy": "fragment",
-            "tcpKeepAliveIdle": 100,
-            "tcpNoDelay": true
-          }
-        }
-      },
-      {
-        "tag": "fragment",
-        "protocol": "freedom",
-        "settings": {
-          "domainStrategy": "UseIP",
-          "fragment": {
-            "packets": "tlshello",
-            "length": "100-200",
-            "interval": "10-20"
-          }
-        },
-        "streamSettings": {
-          "sockopt": {
-            "tcpNoDelay": true,
-            "tcpKeepAliveIdle": 100
-          }
-        }
-      },
-      {
-        "tag": "direct",
-        "protocol": "freedom"
-      },
-      {
-        "tag": "block",
-        "protocol": "blackhole"
-      }
-    ],
-    "routing": {
-      "domainStrategy": "IPIfNonMatch",
-      "rules": [
-        {
-          "type": "field",
-          "ip": [
-            "10.0.0.0/8",
-            "172.16.0.0/12",
-            "192.168.0.0/16",
-            "127.0.0.0/8",
-            "169.254.0.0/16",
-            "fc00::/7",
-            "fe80::/10",
-            "::1/128"
-          ],
-          "outboundTag": "direct"
-        },
-        {
-          "type": "field",
-          "network": "tcp,udp",
-          "outboundTag": "proxy"
-        }
-      ]
-    }
-  },
-  {
-    "remarks": "🛡️ 🇺🇸 US · REALITY · 70ms · Zippy #02",
+    "remarks": "🛡️ 🇺🇸 US · REALITY · 45ms · Zippy #01",
     "log": {
       "loglevel": "warning"
     },
@@ -264,7 +132,7 @@
     }
   },
   {
-    "remarks": "🛡️ 🇺🇸 US · REALITY · 62ms · Zippy #03",
+    "remarks": "🛡️ 🇺🇸 US · REALITY · 48ms · Zippy #02",
     "log": {
       "loglevel": "warning"
     },
@@ -313,11 +181,143 @@
         "settings": {
           "vnext": [
             {
-              "address": "38.244.5.231",
+              "address": "179.254.94.184",
               "port": 443,
               "users": [
                 {
-                  "id": "1bd6c8a2-01db-4a3d-8b2c-0b2f2c3e8b5a",
+                  "id": "2f12e5b5-6ce7-47ab-88b9-6110c1a3fc60",
+                  "encryption": "none",
+                  "flow": "xtls-rprx-vision"
+                }
+              ]
+            }
+          ]
+        },
+        "streamSettings": {
+          "network": "tcp",
+          "security": "reality",
+          "realitySettings": {
+            "show": false,
+            "fingerprint": "chrome",
+            "serverName": "www.bing.com",
+            "publicKey": "q49v36UVMNsNION3nn-cQU6_8VwgM_psm1s5z7XVaWc",
+            "shortId": "e6052385636f0700",
+            "spiderX": "/"
+          },
+          "sockopt": {
+            "dialerProxy": "fragment",
+            "tcpKeepAliveIdle": 100,
+            "tcpNoDelay": true
+          }
+        }
+      },
+      {
+        "tag": "fragment",
+        "protocol": "freedom",
+        "settings": {
+          "domainStrategy": "UseIP",
+          "fragment": {
+            "packets": "tlshello",
+            "length": "100-200",
+            "interval": "10-20"
+          }
+        },
+        "streamSettings": {
+          "sockopt": {
+            "tcpNoDelay": true,
+            "tcpKeepAliveIdle": 100
+          }
+        }
+      },
+      {
+        "tag": "direct",
+        "protocol": "freedom"
+      },
+      {
+        "tag": "block",
+        "protocol": "blackhole"
+      }
+    ],
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        {
+          "type": "field",
+          "ip": [
+            "10.0.0.0/8",
+            "172.16.0.0/12",
+            "192.168.0.0/16",
+            "127.0.0.0/8",
+            "169.254.0.0/16",
+            "fc00::/7",
+            "fe80::/10",
+            "::1/128"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "type": "field",
+          "network": "tcp,udp",
+          "outboundTag": "proxy"
+        }
+      ]
+    }
+  },
+  {
+    "remarks": "🛡️ 🇺🇸 US · REALITY · 169ms · Zippy #03",
+    "log": {
+      "loglevel": "warning"
+    },
+    "dns": {
+      "servers": [
+        "https://1.1.1.1/dns-query",
+        "https://8.8.8.8/dns-query",
+        "1.1.1.1"
+      ],
+      "queryStrategy": "UseIPv4"
+    },
+    "inbounds": [
+      {
+        "tag": "socks",
+        "port": 10808,
+        "listen": "127.0.0.1",
+        "protocol": "socks",
+        "sniffing": {
+          "enabled": true,
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "routeOnly": true
+        },
+        "settings": {
+          "auth": "noauth",
+          "udp": true
+        }
+      },
+      {
+        "tag": "http",
+        "port": 10809,
+        "listen": "127.0.0.1",
+        "protocol": "http",
+        "settings": {
+          "allowTransparent": false
+        }
+      }
+    ],
+    "outbounds": [
+      {
+        "tag": "proxy",
+        "protocol": "vless",
+        "settings": {
+          "vnext": [
+            {
+              "address": "47.253.226.114",
+              "port": 443,
+              "users": [
+                {
+                  "id": "055a1ce8-2a16-4a0d-a2c2-22826c9b2413",
                   "encryption": "none",
                   "flow": "xtls-rprx-vision"
                 }
@@ -332,8 +332,8 @@
             "show": false,
             "fingerprint": "chrome",
             "serverName": "www.cloudflare.com",
-            "publicKey": "DUpNPvLjiL1GzeF7DfKWba-LYLz1KPuQXewhgNGPiDM",
-            "shortId": "ab0a5b56",
+            "publicKey": "Svl81isn16RPAFnjtmYw7A6TPnsEPLHuYYaJht65Rzc",
+            "shortId": "",
             "spiderX": "/"
           },
           "sockopt": {
@@ -396,139 +396,7 @@
     }
   },
   {
-    "remarks": "🛡️ 🇺🇸 US · REALITY · 144ms · Zippy #04",
-    "log": {
-      "loglevel": "warning"
-    },
-    "dns": {
-      "servers": [
-        "https://1.1.1.1/dns-query",
-        "https://8.8.8.8/dns-query",
-        "1.1.1.1"
-      ],
-      "queryStrategy": "UseIPv4"
-    },
-    "inbounds": [
-      {
-        "tag": "socks",
-        "port": 10808,
-        "listen": "127.0.0.1",
-        "protocol": "socks",
-        "sniffing": {
-          "enabled": true,
-          "destOverride": [
-            "http",
-            "tls",
-            "quic"
-          ],
-          "routeOnly": true
-        },
-        "settings": {
-          "auth": "noauth",
-          "udp": true
-        }
-      },
-      {
-        "tag": "http",
-        "port": 10809,
-        "listen": "127.0.0.1",
-        "protocol": "http",
-        "settings": {
-          "allowTransparent": false
-        }
-      }
-    ],
-    "outbounds": [
-      {
-        "tag": "proxy",
-        "protocol": "vless",
-        "settings": {
-          "vnext": [
-            {
-              "address": "179.254.92.134",
-              "port": 443,
-              "users": [
-                {
-                  "id": "7ad63b26-bf70-4872-8fab-ebaf73a1e19d",
-                  "encryption": "none",
-                  "flow": "xtls-rprx-vision"
-                }
-              ]
-            }
-          ]
-        },
-        "streamSettings": {
-          "network": "tcp",
-          "security": "reality",
-          "realitySettings": {
-            "show": false,
-            "fingerprint": "chrome",
-            "serverName": "assets-70.topp-con.xyz",
-            "publicKey": "OQu-e59wDwOSwiBBawquNAPhg8Li1hmioWU2Up1TGDw",
-            "shortId": "c33807f76b689c9a",
-            "spiderX": "/"
-          },
-          "sockopt": {
-            "dialerProxy": "fragment",
-            "tcpKeepAliveIdle": 100,
-            "tcpNoDelay": true
-          }
-        }
-      },
-      {
-        "tag": "fragment",
-        "protocol": "freedom",
-        "settings": {
-          "domainStrategy": "UseIP",
-          "fragment": {
-            "packets": "tlshello",
-            "length": "100-200",
-            "interval": "10-20"
-          }
-        },
-        "streamSettings": {
-          "sockopt": {
-            "tcpNoDelay": true,
-            "tcpKeepAliveIdle": 100
-          }
-        }
-      },
-      {
-        "tag": "direct",
-        "protocol": "freedom"
-      },
-      {
-        "tag": "block",
-        "protocol": "blackhole"
-      }
-    ],
-    "routing": {
-      "domainStrategy": "IPIfNonMatch",
-      "rules": [
-        {
-          "type": "field",
-          "ip": [
-            "10.0.0.0/8",
-            "172.16.0.0/12",
-            "192.168.0.0/16",
-            "127.0.0.0/8",
-            "169.254.0.0/16",
-            "fc00::/7",
-            "fe80::/10",
-            "::1/128"
-          ],
-          "outboundTag": "direct"
-        },
-        {
-          "type": "field",
-          "network": "tcp,udp",
-          "outboundTag": "proxy"
-        }
-      ]
-    }
-  },
-  {
-    "remarks": "🛡️ 🇨🇦 CA · VLESS-WS · 63ms · Zippy #05",
+    "remarks": "🛡️ 🇨🇦 CA · VLESS-WS · 70ms · Zippy #04",
     "log": {
       "loglevel": "warning"
     },
@@ -600,7 +468,7 @@
             ]
           },
           "wsSettings": {
-            "path": "/?Telegram---PLANB_NET---PLANB_NET---PLANB_NET---PLANB_NET",
+            "path": "/?TELEGRAM---MARAMBASHI---MARAMBASHI---MARAMBASHI---MARAMBASHI",
             "headers": {
               "Host": "freeceshi6.frii.site"
             }
@@ -665,7 +533,271 @@
     }
   },
   {
-    "remarks": "🛡️ 🇺🇸 US · REALITY · 107ms · Zippy #06",
+    "remarks": "🛡️ 🇺🇸 US · REALITY · 92ms · Zippy #05",
+    "log": {
+      "loglevel": "warning"
+    },
+    "dns": {
+      "servers": [
+        "https://1.1.1.1/dns-query",
+        "https://8.8.8.8/dns-query",
+        "1.1.1.1"
+      ],
+      "queryStrategy": "UseIPv4"
+    },
+    "inbounds": [
+      {
+        "tag": "socks",
+        "port": 10808,
+        "listen": "127.0.0.1",
+        "protocol": "socks",
+        "sniffing": {
+          "enabled": true,
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "routeOnly": true
+        },
+        "settings": {
+          "auth": "noauth",
+          "udp": true
+        }
+      },
+      {
+        "tag": "http",
+        "port": 10809,
+        "listen": "127.0.0.1",
+        "protocol": "http",
+        "settings": {
+          "allowTransparent": false
+        }
+      }
+    ],
+    "outbounds": [
+      {
+        "tag": "proxy",
+        "protocol": "vless",
+        "settings": {
+          "vnext": [
+            {
+              "address": "195.123.240.65",
+              "port": 443,
+              "users": [
+                {
+                  "id": "ce18d0eb-5c71-41f9-96e5-1632e22456e4",
+                  "encryption": "none",
+                  "flow": "xtls-rprx-vision"
+                }
+              ]
+            }
+          ]
+        },
+        "streamSettings": {
+          "network": "tcp",
+          "security": "reality",
+          "realitySettings": {
+            "show": false,
+            "fingerprint": "chrome",
+            "serverName": "www.cloudflare.com",
+            "publicKey": "StPbcmBuzpuYUfa4oZ5SI3Bq1OSF_-oU1vp2AcyvQVE",
+            "shortId": "19296c9f1bf9c7b1",
+            "spiderX": "/"
+          },
+          "sockopt": {
+            "dialerProxy": "fragment",
+            "tcpKeepAliveIdle": 100,
+            "tcpNoDelay": true
+          }
+        }
+      },
+      {
+        "tag": "fragment",
+        "protocol": "freedom",
+        "settings": {
+          "domainStrategy": "UseIP",
+          "fragment": {
+            "packets": "tlshello",
+            "length": "100-200",
+            "interval": "10-20"
+          }
+        },
+        "streamSettings": {
+          "sockopt": {
+            "tcpNoDelay": true,
+            "tcpKeepAliveIdle": 100
+          }
+        }
+      },
+      {
+        "tag": "direct",
+        "protocol": "freedom"
+      },
+      {
+        "tag": "block",
+        "protocol": "blackhole"
+      }
+    ],
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        {
+          "type": "field",
+          "ip": [
+            "10.0.0.0/8",
+            "172.16.0.0/12",
+            "192.168.0.0/16",
+            "127.0.0.0/8",
+            "169.254.0.0/16",
+            "fc00::/7",
+            "fe80::/10",
+            "::1/128"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "type": "field",
+          "network": "tcp,udp",
+          "outboundTag": "proxy"
+        }
+      ]
+    }
+  },
+  {
+    "remarks": "🛡️ 🇺🇸 US · REALITY · 196ms · Zippy #06",
+    "log": {
+      "loglevel": "warning"
+    },
+    "dns": {
+      "servers": [
+        "https://1.1.1.1/dns-query",
+        "https://8.8.8.8/dns-query",
+        "1.1.1.1"
+      ],
+      "queryStrategy": "UseIPv4"
+    },
+    "inbounds": [
+      {
+        "tag": "socks",
+        "port": 10808,
+        "listen": "127.0.0.1",
+        "protocol": "socks",
+        "sniffing": {
+          "enabled": true,
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "routeOnly": true
+        },
+        "settings": {
+          "auth": "noauth",
+          "udp": true
+        }
+      },
+      {
+        "tag": "http",
+        "port": 10809,
+        "listen": "127.0.0.1",
+        "protocol": "http",
+        "settings": {
+          "allowTransparent": false
+        }
+      }
+    ],
+    "outbounds": [
+      {
+        "tag": "proxy",
+        "protocol": "vless",
+        "settings": {
+          "vnext": [
+            {
+              "address": "185.95.231.156",
+              "port": 443,
+              "users": [
+                {
+                  "id": "1f8cf47a-b66a-4916-979f-26edfcf44eea",
+                  "encryption": "none",
+                  "flow": "xtls-rprx-vision"
+                }
+              ]
+            }
+          ]
+        },
+        "streamSettings": {
+          "network": "tcp",
+          "security": "reality",
+          "realitySettings": {
+            "show": false,
+            "fingerprint": "random",
+            "serverName": "www.apple.com",
+            "publicKey": "8eXftARun6KH38UZhuqIfPR1VF2DLS9RMBZEnF5k6To",
+            "shortId": "a3a578ab",
+            "spiderX": "/"
+          },
+          "sockopt": {
+            "dialerProxy": "fragment",
+            "tcpKeepAliveIdle": 100,
+            "tcpNoDelay": true
+          }
+        }
+      },
+      {
+        "tag": "fragment",
+        "protocol": "freedom",
+        "settings": {
+          "domainStrategy": "UseIP",
+          "fragment": {
+            "packets": "tlshello",
+            "length": "100-200",
+            "interval": "10-20"
+          }
+        },
+        "streamSettings": {
+          "sockopt": {
+            "tcpNoDelay": true,
+            "tcpKeepAliveIdle": 100
+          }
+        }
+      },
+      {
+        "tag": "direct",
+        "protocol": "freedom"
+      },
+      {
+        "tag": "block",
+        "protocol": "blackhole"
+      }
+    ],
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        {
+          "type": "field",
+          "ip": [
+            "10.0.0.0/8",
+            "172.16.0.0/12",
+            "192.168.0.0/16",
+            "127.0.0.0/8",
+            "169.254.0.0/16",
+            "fc00::/7",
+            "fe80::/10",
+            "::1/128"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "type": "field",
+          "network": "tcp,udp",
+          "outboundTag": "proxy"
+        }
+      ]
+    }
+  },
+  {
+    "remarks": "🛡️ 🇺🇸 US · REALITY · 129ms · Zippy #07",
     "log": {
       "loglevel": "warning"
     },
@@ -797,7 +929,7 @@
     }
   },
   {
-    "remarks": "🛡️ 🇨🇦 CA · VLESS-WS · 74ms · Zippy #07",
+    "remarks": "🛡️ 🇺🇸 US · REALITY · 270ms · Zippy #08",
     "log": {
       "loglevel": "warning"
     },
@@ -846,276 +978,7 @@
         "settings": {
           "vnext": [
             {
-              "address": "188.114.98.0",
-              "port": 443,
-              "users": [
-                {
-                  "id": "53bbdad4-2f4e-45db-8df4-fa491a6a7227",
-                  "encryption": "none"
-                }
-              ]
-            }
-          ]
-        },
-        "streamSettings": {
-          "network": "ws",
-          "security": "tls",
-          "tlsSettings": {
-            "serverName": "freeceshi6.frii.site",
-            "allowInsecure": false,
-            "fingerprint": "chrome",
-            "alpn": [
-              "http/1.1"
-            ]
-          },
-          "wsSettings": {
-            "path": "/?TELEGRAM--MARAMBASHI--MARAMBASHI--MARAMBASHI--MARAMBASHI?ed=512",
-            "headers": {
-              "Host": "freeceshi6.frii.site"
-            }
-          },
-          "sockopt": {
-            "dialerProxy": "fragment",
-            "tcpKeepAliveIdle": 100,
-            "tcpNoDelay": true
-          }
-        }
-      },
-      {
-        "tag": "fragment",
-        "protocol": "freedom",
-        "settings": {
-          "domainStrategy": "UseIP",
-          "fragment": {
-            "packets": "tlshello",
-            "length": "100-200",
-            "interval": "10-20"
-          }
-        },
-        "streamSettings": {
-          "sockopt": {
-            "tcpNoDelay": true,
-            "tcpKeepAliveIdle": 100
-          }
-        }
-      },
-      {
-        "tag": "direct",
-        "protocol": "freedom"
-      },
-      {
-        "tag": "block",
-        "protocol": "blackhole"
-      }
-    ],
-    "routing": {
-      "domainStrategy": "IPIfNonMatch",
-      "rules": [
-        {
-          "type": "field",
-          "ip": [
-            "10.0.0.0/8",
-            "172.16.0.0/12",
-            "192.168.0.0/16",
-            "127.0.0.0/8",
-            "169.254.0.0/16",
-            "fc00::/7",
-            "fe80::/10",
-            "::1/128"
-          ],
-          "outboundTag": "direct"
-        },
-        {
-          "type": "field",
-          "network": "tcp,udp",
-          "outboundTag": "proxy"
-        }
-      ]
-    }
-  },
-  {
-    "remarks": "🛡️ 🇺🇸 US · REALITY · 214ms · Zippy #08",
-    "log": {
-      "loglevel": "warning"
-    },
-    "dns": {
-      "servers": [
-        "https://1.1.1.1/dns-query",
-        "https://8.8.8.8/dns-query",
-        "1.1.1.1"
-      ],
-      "queryStrategy": "UseIPv4"
-    },
-    "inbounds": [
-      {
-        "tag": "socks",
-        "port": 10808,
-        "listen": "127.0.0.1",
-        "protocol": "socks",
-        "sniffing": {
-          "enabled": true,
-          "destOverride": [
-            "http",
-            "tls",
-            "quic"
-          ],
-          "routeOnly": true
-        },
-        "settings": {
-          "auth": "noauth",
-          "udp": true
-        }
-      },
-      {
-        "tag": "http",
-        "port": 10809,
-        "listen": "127.0.0.1",
-        "protocol": "http",
-        "settings": {
-          "allowTransparent": false
-        }
-      }
-    ],
-    "outbounds": [
-      {
-        "tag": "proxy",
-        "protocol": "vless",
-        "settings": {
-          "vnext": [
-            {
-              "address": "195.123.235.183",
-              "port": 443,
-              "users": [
-                {
-                  "id": "c14ec728-3eca-4750-87fc-fd1e6aeb81d5",
-                  "encryption": "none",
-                  "flow": "xtls-rprx-vision"
-                }
-              ]
-            }
-          ]
-        },
-        "streamSettings": {
-          "network": "tcp",
-          "security": "reality",
-          "realitySettings": {
-            "show": false,
-            "fingerprint": "chrome",
-            "serverName": "gateway.icloud.com",
-            "publicKey": "H3R3BUAl7thrIZsznTbb-eRREIjQOH2f3WO0oTN7OGY",
-            "shortId": "a0e2a6074c6456b0",
-            "spiderX": "/"
-          },
-          "sockopt": {
-            "dialerProxy": "fragment",
-            "tcpKeepAliveIdle": 100,
-            "tcpNoDelay": true
-          }
-        }
-      },
-      {
-        "tag": "fragment",
-        "protocol": "freedom",
-        "settings": {
-          "domainStrategy": "UseIP",
-          "fragment": {
-            "packets": "tlshello",
-            "length": "100-200",
-            "interval": "10-20"
-          }
-        },
-        "streamSettings": {
-          "sockopt": {
-            "tcpNoDelay": true,
-            "tcpKeepAliveIdle": 100
-          }
-        }
-      },
-      {
-        "tag": "direct",
-        "protocol": "freedom"
-      },
-      {
-        "tag": "block",
-        "protocol": "blackhole"
-      }
-    ],
-    "routing": {
-      "domainStrategy": "IPIfNonMatch",
-      "rules": [
-        {
-          "type": "field",
-          "ip": [
-            "10.0.0.0/8",
-            "172.16.0.0/12",
-            "192.168.0.0/16",
-            "127.0.0.0/8",
-            "169.254.0.0/16",
-            "fc00::/7",
-            "fe80::/10",
-            "::1/128"
-          ],
-          "outboundTag": "direct"
-        },
-        {
-          "type": "field",
-          "network": "tcp,udp",
-          "outboundTag": "proxy"
-        }
-      ]
-    }
-  },
-  {
-    "remarks": "🛡️ 🇺🇸 US · REALITY · 290ms · Zippy #09",
-    "log": {
-      "loglevel": "warning"
-    },
-    "dns": {
-      "servers": [
-        "https://1.1.1.1/dns-query",
-        "https://8.8.8.8/dns-query",
-        "1.1.1.1"
-      ],
-      "queryStrategy": "UseIPv4"
-    },
-    "inbounds": [
-      {
-        "tag": "socks",
-        "port": 10808,
-        "listen": "127.0.0.1",
-        "protocol": "socks",
-        "sniffing": {
-          "enabled": true,
-          "destOverride": [
-            "http",
-            "tls",
-            "quic"
-          ],
-          "routeOnly": true
-        },
-        "settings": {
-          "auth": "noauth",
-          "udp": true
-        }
-      },
-      {
-        "tag": "http",
-        "port": 10809,
-        "listen": "127.0.0.1",
-        "protocol": "http",
-        "settings": {
-          "allowTransparent": false
-        }
-      }
-    ],
-    "outbounds": [
-      {
-        "tag": "proxy",
-        "protocol": "vless",
-        "settings": {
-          "vnext": [
-            {
-              "address": "169.40.42.231",
+              "address": "169.40.42.74",
               "port": 443,
               "users": [
                 {
@@ -1198,7 +1061,7 @@
     }
   },
   {
-    "remarks": "🛡️ 🇨🇦 CA · VLESS-WS · 96ms · Zippy #10",
+    "remarks": "🛡️ 🇺🇸 US · VLESS-WS · 72ms · Zippy #09",
     "log": {
       "loglevel": "warning"
     },
@@ -1247,11 +1110,11 @@
         "settings": {
           "vnext": [
             {
-              "address": "ws.liuzedong.ltd",
+              "address": "162.159.254.201",
               "port": 443,
               "users": [
                 {
-                  "id": "fcead694-2e27-4eeb-8836-9d4acf3e028b",
+                  "id": "53bbdad4-2f4e-45db-8df4-fa491a6a7227",
                   "encryption": "none"
                 }
               ]
@@ -1262,14 +1125,17 @@
           "network": "ws",
           "security": "tls",
           "tlsSettings": {
-            "serverName": "ws.liuzedong.ltd",
+            "serverName": "freeceshi6.frii.site",
             "allowInsecure": false,
-            "fingerprint": "chrome"
+            "fingerprint": "chrome",
+            "alpn": [
+              "http/1.1"
+            ]
           },
           "wsSettings": {
-            "path": "/ws",
+            "path": "/?TELEGRAM---MARAMBASHI---MARAMBASHI---MARAMBASHI---MARAMBASHI",
             "headers": {
-              "Host": "ws.liuzedong.ltd"
+              "Host": "freeceshi6.frii.site"
             }
           },
           "sockopt": {
@@ -1332,7 +1198,7 @@
     }
   },
   {
-    "remarks": "🛡️ 🇺🇸 US · REALITY · 190ms · Zippy #11",
+    "remarks": "🛡️ 🇺🇸 US · REALITY · 186ms · Zippy #10",
     "log": {
       "loglevel": "warning"
     },
@@ -1398,7 +1264,7 @@
           "security": "reality",
           "realitySettings": {
             "show": false,
-            "fingerprint": "firefox",
+            "fingerprint": "chrome",
             "serverName": "aws.amazon.com",
             "publicKey": "ZJRnFU-1s1JOnO8E9uZ7b00l1fPEh63fGRbdBANFRno",
             "shortId": "",
@@ -1464,7 +1330,7 @@
     }
   },
   {
-    "remarks": "🛡️ 🇺🇸 US · VLESS · 110ms · Zippy #12",
+    "remarks": "🛡️ 🇨🇦 CA · VLESS-WS · 98ms · Zippy #11",
     "log": {
       "loglevel": "warning"
     },
@@ -1513,781 +1379,11 @@
         "settings": {
           "vnext": [
             {
-              "address": "216.106.185.158",
-              "port": 443,
-              "users": [
-                {
-                  "id": "03fcc618-b93d-6796-6aed-8a38c975d581",
-                  "encryption": "none"
-                }
-              ]
-            }
-          ]
-        },
-        "streamSettings": {
-          "network": "tcp",
-          "security": "tls",
-          "tlsSettings": {
-            "serverName": "kuruish.org",
-            "allowInsecure": false,
-            "fingerprint": "chrome"
-          },
-          "sockopt": {
-            "dialerProxy": "fragment",
-            "tcpKeepAliveIdle": 100,
-            "tcpNoDelay": true
-          }
-        }
-      },
-      {
-        "tag": "fragment",
-        "protocol": "freedom",
-        "settings": {
-          "domainStrategy": "UseIP",
-          "fragment": {
-            "packets": "tlshello",
-            "length": "100-200",
-            "interval": "10-20"
-          }
-        },
-        "streamSettings": {
-          "sockopt": {
-            "tcpNoDelay": true,
-            "tcpKeepAliveIdle": 100
-          }
-        }
-      },
-      {
-        "tag": "direct",
-        "protocol": "freedom"
-      },
-      {
-        "tag": "block",
-        "protocol": "blackhole"
-      }
-    ],
-    "routing": {
-      "domainStrategy": "IPIfNonMatch",
-      "rules": [
-        {
-          "type": "field",
-          "ip": [
-            "10.0.0.0/8",
-            "172.16.0.0/12",
-            "192.168.0.0/16",
-            "127.0.0.0/8",
-            "169.254.0.0/16",
-            "fc00::/7",
-            "fe80::/10",
-            "::1/128"
-          ],
-          "outboundTag": "direct"
-        },
-        {
-          "type": "field",
-          "network": "tcp,udp",
-          "outboundTag": "proxy"
-        }
-      ]
-    }
-  },
-  {
-    "remarks": "🛡️ 🇳🇱 NL · REALITY · 449ms · Zippy #13",
-    "log": {
-      "loglevel": "warning"
-    },
-    "dns": {
-      "servers": [
-        "https://1.1.1.1/dns-query",
-        "https://8.8.8.8/dns-query",
-        "1.1.1.1"
-      ],
-      "queryStrategy": "UseIPv4"
-    },
-    "inbounds": [
-      {
-        "tag": "socks",
-        "port": 10808,
-        "listen": "127.0.0.1",
-        "protocol": "socks",
-        "sniffing": {
-          "enabled": true,
-          "destOverride": [
-            "http",
-            "tls",
-            "quic"
-          ],
-          "routeOnly": true
-        },
-        "settings": {
-          "auth": "noauth",
-          "udp": true
-        }
-      },
-      {
-        "tag": "http",
-        "port": 10809,
-        "listen": "127.0.0.1",
-        "protocol": "http",
-        "settings": {
-          "allowTransparent": false
-        }
-      }
-    ],
-    "outbounds": [
-      {
-        "tag": "proxy",
-        "protocol": "vless",
-        "settings": {
-          "vnext": [
-            {
-              "address": "45.94.36.2",
-              "port": 443,
-              "users": [
-                {
-                  "id": "f69e272f-e0e5-4e9d-b180-5be63930cde9",
-                  "encryption": "none",
-                  "flow": "xtls-rprx-vision"
-                }
-              ]
-            }
-          ]
-        },
-        "streamSettings": {
-          "network": "tcp",
-          "security": "reality",
-          "realitySettings": {
-            "show": false,
-            "fingerprint": "chrome",
-            "serverName": "nl.memepn.com",
-            "publicKey": "drl7nndYdfzZY1aQ0eUAWmNV0nsHig2uDnu9siy9biQ",
-            "shortId": "868419504747f6de",
-            "spiderX": "/"
-          },
-          "sockopt": {
-            "dialerProxy": "fragment",
-            "tcpKeepAliveIdle": 100,
-            "tcpNoDelay": true
-          }
-        }
-      },
-      {
-        "tag": "fragment",
-        "protocol": "freedom",
-        "settings": {
-          "domainStrategy": "UseIP",
-          "fragment": {
-            "packets": "tlshello",
-            "length": "100-200",
-            "interval": "10-20"
-          }
-        },
-        "streamSettings": {
-          "sockopt": {
-            "tcpNoDelay": true,
-            "tcpKeepAliveIdle": 100
-          }
-        }
-      },
-      {
-        "tag": "direct",
-        "protocol": "freedom"
-      },
-      {
-        "tag": "block",
-        "protocol": "blackhole"
-      }
-    ],
-    "routing": {
-      "domainStrategy": "IPIfNonMatch",
-      "rules": [
-        {
-          "type": "field",
-          "ip": [
-            "10.0.0.0/8",
-            "172.16.0.0/12",
-            "192.168.0.0/16",
-            "127.0.0.0/8",
-            "169.254.0.0/16",
-            "fc00::/7",
-            "fe80::/10",
-            "::1/128"
-          ],
-          "outboundTag": "direct"
-        },
-        {
-          "type": "field",
-          "network": "tcp,udp",
-          "outboundTag": "proxy"
-        }
-      ]
-    }
-  },
-  {
-    "remarks": "🛡️ 🇺🇸 US · TROJAN · 67ms · Zippy #14",
-    "log": {
-      "loglevel": "warning"
-    },
-    "dns": {
-      "servers": [
-        "https://1.1.1.1/dns-query",
-        "https://8.8.8.8/dns-query",
-        "1.1.1.1"
-      ],
-      "queryStrategy": "UseIPv4"
-    },
-    "inbounds": [
-      {
-        "tag": "socks",
-        "port": 10808,
-        "listen": "127.0.0.1",
-        "protocol": "socks",
-        "sniffing": {
-          "enabled": true,
-          "destOverride": [
-            "http",
-            "tls",
-            "quic"
-          ],
-          "routeOnly": true
-        },
-        "settings": {
-          "auth": "noauth",
-          "udp": true
-        }
-      },
-      {
-        "tag": "http",
-        "port": 10809,
-        "listen": "127.0.0.1",
-        "protocol": "http",
-        "settings": {
-          "allowTransparent": false
-        }
-      }
-    ],
-    "outbounds": [
-      {
-        "tag": "proxy",
-        "protocol": "trojan",
-        "settings": {
-          "servers": [
-            {
-              "address": "167.88.61.193",
-              "port": 443,
-              "password": "0ab6c98dae3b48e8b9c4a776b6c9c19a"
-            }
-          ]
-        },
-        "streamSettings": {
-          "network": "tcp",
-          "security": "tls",
-          "tlsSettings": {
-            "serverName": "browseseniorrolesandenhanceyourcareertoday.com",
-            "allowInsecure": false,
-            "fingerprint": "chrome"
-          },
-          "sockopt": {
-            "dialerProxy": "fragment",
-            "tcpKeepAliveIdle": 100,
-            "tcpNoDelay": true
-          }
-        }
-      },
-      {
-        "tag": "fragment",
-        "protocol": "freedom",
-        "settings": {
-          "domainStrategy": "UseIP",
-          "fragment": {
-            "packets": "tlshello",
-            "length": "100-200",
-            "interval": "10-20"
-          }
-        },
-        "streamSettings": {
-          "sockopt": {
-            "tcpNoDelay": true,
-            "tcpKeepAliveIdle": 100
-          }
-        }
-      },
-      {
-        "tag": "direct",
-        "protocol": "freedom"
-      },
-      {
-        "tag": "block",
-        "protocol": "blackhole"
-      }
-    ],
-    "routing": {
-      "domainStrategy": "IPIfNonMatch",
-      "rules": [
-        {
-          "type": "field",
-          "ip": [
-            "10.0.0.0/8",
-            "172.16.0.0/12",
-            "192.168.0.0/16",
-            "127.0.0.0/8",
-            "169.254.0.0/16",
-            "fc00::/7",
-            "fe80::/10",
-            "::1/128"
-          ],
-          "outboundTag": "direct"
-        },
-        {
-          "type": "field",
-          "network": "tcp,udp",
-          "outboundTag": "proxy"
-        }
-      ]
-    }
-  },
-  {
-    "remarks": "🛡️ 🇺🇸 US · TROJAN · 78ms · Zippy #15",
-    "log": {
-      "loglevel": "warning"
-    },
-    "dns": {
-      "servers": [
-        "https://1.1.1.1/dns-query",
-        "https://8.8.8.8/dns-query",
-        "1.1.1.1"
-      ],
-      "queryStrategy": "UseIPv4"
-    },
-    "inbounds": [
-      {
-        "tag": "socks",
-        "port": 10808,
-        "listen": "127.0.0.1",
-        "protocol": "socks",
-        "sniffing": {
-          "enabled": true,
-          "destOverride": [
-            "http",
-            "tls",
-            "quic"
-          ],
-          "routeOnly": true
-        },
-        "settings": {
-          "auth": "noauth",
-          "udp": true
-        }
-      },
-      {
-        "tag": "http",
-        "port": 10809,
-        "listen": "127.0.0.1",
-        "protocol": "http",
-        "settings": {
-          "allowTransparent": false
-        }
-      }
-    ],
-    "outbounds": [
-      {
-        "tag": "proxy",
-        "protocol": "trojan",
-        "settings": {
-          "servers": [
-            {
-              "address": "167.88.61.52",
-              "port": 443,
-              "password": "0ab6c98dae3b48e8b9c4a776b6c9c19a"
-            }
-          ]
-        },
-        "streamSettings": {
-          "network": "tcp",
-          "security": "tls",
-          "tlsSettings": {
-            "serverName": "courses.browseseniorrolesandenhanceyourcareertoday.com",
-            "allowInsecure": false,
-            "fingerprint": "chrome"
-          },
-          "sockopt": {
-            "dialerProxy": "fragment",
-            "tcpKeepAliveIdle": 100,
-            "tcpNoDelay": true
-          }
-        }
-      },
-      {
-        "tag": "fragment",
-        "protocol": "freedom",
-        "settings": {
-          "domainStrategy": "UseIP",
-          "fragment": {
-            "packets": "tlshello",
-            "length": "100-200",
-            "interval": "10-20"
-          }
-        },
-        "streamSettings": {
-          "sockopt": {
-            "tcpNoDelay": true,
-            "tcpKeepAliveIdle": 100
-          }
-        }
-      },
-      {
-        "tag": "direct",
-        "protocol": "freedom"
-      },
-      {
-        "tag": "block",
-        "protocol": "blackhole"
-      }
-    ],
-    "routing": {
-      "domainStrategy": "IPIfNonMatch",
-      "rules": [
-        {
-          "type": "field",
-          "ip": [
-            "10.0.0.0/8",
-            "172.16.0.0/12",
-            "192.168.0.0/16",
-            "127.0.0.0/8",
-            "169.254.0.0/16",
-            "fc00::/7",
-            "fe80::/10",
-            "::1/128"
-          ],
-          "outboundTag": "direct"
-        },
-        {
-          "type": "field",
-          "network": "tcp,udp",
-          "outboundTag": "proxy"
-        }
-      ]
-    }
-  },
-  {
-    "remarks": "🛡️ 🇯🇵 JP · REALITY · 336ms · Zippy #16",
-    "log": {
-      "loglevel": "warning"
-    },
-    "dns": {
-      "servers": [
-        "https://1.1.1.1/dns-query",
-        "https://8.8.8.8/dns-query",
-        "1.1.1.1"
-      ],
-      "queryStrategy": "UseIPv4"
-    },
-    "inbounds": [
-      {
-        "tag": "socks",
-        "port": 10808,
-        "listen": "127.0.0.1",
-        "protocol": "socks",
-        "sniffing": {
-          "enabled": true,
-          "destOverride": [
-            "http",
-            "tls",
-            "quic"
-          ],
-          "routeOnly": true
-        },
-        "settings": {
-          "auth": "noauth",
-          "udp": true
-        }
-      },
-      {
-        "tag": "http",
-        "port": 10809,
-        "listen": "127.0.0.1",
-        "protocol": "http",
-        "settings": {
-          "allowTransparent": false
-        }
-      }
-    ],
-    "outbounds": [
-      {
-        "tag": "proxy",
-        "protocol": "vless",
-        "settings": {
-          "vnext": [
-            {
-              "address": "31.76.91.98",
-              "port": 443,
-              "users": [
-                {
-                  "id": "7072eeba-94fd-4fb3-92f2-a4506dd84cd8",
-                  "encryption": "none",
-                  "flow": "xtls-rprx-vision"
-                }
-              ]
-            }
-          ]
-        },
-        "streamSettings": {
-          "network": "tcp",
-          "security": "reality",
-          "realitySettings": {
-            "show": false,
-            "fingerprint": "chrome",
-            "serverName": "fuji.etherhub.cc",
-            "publicKey": "ejx56dFtS4LK_Th6HSLFFdm7v7zqRpv8KfjrWAw4Sjg",
-            "shortId": "bd6f67b6b2152b45",
-            "spiderX": "/"
-          },
-          "sockopt": {
-            "dialerProxy": "fragment",
-            "tcpKeepAliveIdle": 100,
-            "tcpNoDelay": true
-          }
-        }
-      },
-      {
-        "tag": "fragment",
-        "protocol": "freedom",
-        "settings": {
-          "domainStrategy": "UseIP",
-          "fragment": {
-            "packets": "tlshello",
-            "length": "100-200",
-            "interval": "10-20"
-          }
-        },
-        "streamSettings": {
-          "sockopt": {
-            "tcpNoDelay": true,
-            "tcpKeepAliveIdle": 100
-          }
-        }
-      },
-      {
-        "tag": "direct",
-        "protocol": "freedom"
-      },
-      {
-        "tag": "block",
-        "protocol": "blackhole"
-      }
-    ],
-    "routing": {
-      "domainStrategy": "IPIfNonMatch",
-      "rules": [
-        {
-          "type": "field",
-          "ip": [
-            "10.0.0.0/8",
-            "172.16.0.0/12",
-            "192.168.0.0/16",
-            "127.0.0.0/8",
-            "169.254.0.0/16",
-            "fc00::/7",
-            "fe80::/10",
-            "::1/128"
-          ],
-          "outboundTag": "direct"
-        },
-        {
-          "type": "field",
-          "network": "tcp,udp",
-          "outboundTag": "proxy"
-        }
-      ]
-    }
-  },
-  {
-    "remarks": "🛡️ 🇺🇸 US · REALITY · 307ms · Zippy #17",
-    "log": {
-      "loglevel": "warning"
-    },
-    "dns": {
-      "servers": [
-        "https://1.1.1.1/dns-query",
-        "https://8.8.8.8/dns-query",
-        "1.1.1.1"
-      ],
-      "queryStrategy": "UseIPv4"
-    },
-    "inbounds": [
-      {
-        "tag": "socks",
-        "port": 10808,
-        "listen": "127.0.0.1",
-        "protocol": "socks",
-        "sniffing": {
-          "enabled": true,
-          "destOverride": [
-            "http",
-            "tls",
-            "quic"
-          ],
-          "routeOnly": true
-        },
-        "settings": {
-          "auth": "noauth",
-          "udp": true
-        }
-      },
-      {
-        "tag": "http",
-        "port": 10809,
-        "listen": "127.0.0.1",
-        "protocol": "http",
-        "settings": {
-          "allowTransparent": false
-        }
-      }
-    ],
-    "outbounds": [
-      {
-        "tag": "proxy",
-        "protocol": "vless",
-        "settings": {
-          "vnext": [
-            {
-              "address": "185.95.231.156",
-              "port": 443,
-              "users": [
-                {
-                  "id": "1f8cf47a-b66a-4916-979f-26edfcf44eea",
-                  "encryption": "none",
-                  "flow": "xtls-rprx-vision"
-                }
-              ]
-            }
-          ]
-        },
-        "streamSettings": {
-          "network": "tcp",
-          "security": "reality",
-          "realitySettings": {
-            "show": false,
-            "fingerprint": "chrome",
-            "serverName": "www.apple.com",
-            "publicKey": "8eXftARun6KH38UZhuqIfPR1VF2DLS9RMBZEnF5k6To",
-            "shortId": "a3a578ab",
-            "spiderX": "/"
-          },
-          "sockopt": {
-            "dialerProxy": "fragment",
-            "tcpKeepAliveIdle": 100,
-            "tcpNoDelay": true
-          }
-        }
-      },
-      {
-        "tag": "fragment",
-        "protocol": "freedom",
-        "settings": {
-          "domainStrategy": "UseIP",
-          "fragment": {
-            "packets": "tlshello",
-            "length": "100-200",
-            "interval": "10-20"
-          }
-        },
-        "streamSettings": {
-          "sockopt": {
-            "tcpNoDelay": true,
-            "tcpKeepAliveIdle": 100
-          }
-        }
-      },
-      {
-        "tag": "direct",
-        "protocol": "freedom"
-      },
-      {
-        "tag": "block",
-        "protocol": "blackhole"
-      }
-    ],
-    "routing": {
-      "domainStrategy": "IPIfNonMatch",
-      "rules": [
-        {
-          "type": "field",
-          "ip": [
-            "10.0.0.0/8",
-            "172.16.0.0/12",
-            "192.168.0.0/16",
-            "127.0.0.0/8",
-            "169.254.0.0/16",
-            "fc00::/7",
-            "fe80::/10",
-            "::1/128"
-          ],
-          "outboundTag": "direct"
-        },
-        {
-          "type": "field",
-          "network": "tcp,udp",
-          "outboundTag": "proxy"
-        }
-      ]
-    }
-  },
-  {
-    "remarks": "🛡️ 🇺🇸 US · REALITY · 93ms · Zippy #18",
-    "log": {
-      "loglevel": "warning"
-    },
-    "dns": {
-      "servers": [
-        "https://1.1.1.1/dns-query",
-        "https://8.8.8.8/dns-query",
-        "1.1.1.1"
-      ],
-      "queryStrategy": "UseIPv4"
-    },
-    "inbounds": [
-      {
-        "tag": "socks",
-        "port": 10808,
-        "listen": "127.0.0.1",
-        "protocol": "socks",
-        "sniffing": {
-          "enabled": true,
-          "destOverride": [
-            "http",
-            "tls",
-            "quic"
-          ],
-          "routeOnly": true
-        },
-        "settings": {
-          "auth": "noauth",
-          "udp": true
-        }
-      },
-      {
-        "tag": "http",
-        "port": 10809,
-        "listen": "127.0.0.1",
-        "protocol": "http",
-        "settings": {
-          "allowTransparent": false
-        }
-      }
-    ],
-    "outbounds": [
-      {
-        "tag": "proxy",
-        "protocol": "vless",
-        "settings": {
-          "vnext": [
-            {
-              "address": "147.224.54.25",
+              "address": "104.16.244.34",
               "port": 2053,
               "users": [
                 {
-                  "id": "cdb7fa1d-6e7a-467c-da9c-da363c7bf779",
+                  "id": "97514cec-cf70-42b1-9743-3f89122adc8e",
                   "encryption": "none"
                 }
               ]
@@ -2295,15 +1391,18 @@
           ]
         },
         "streamSettings": {
-          "network": "tcp",
-          "security": "reality",
-          "realitySettings": {
-            "show": false,
-            "fingerprint": "chrome",
-            "serverName": "www.cloudflare.com",
-            "publicKey": "DEFJSLdILrvauMpwtpvFZddadpt3rNtv03Dui2EkmRk",
-            "shortId": "68",
-            "spiderX": "/"
+          "network": "ws",
+          "security": "tls",
+          "tlsSettings": {
+            "serverName": "cffq.pages.dev",
+            "allowInsecure": false,
+            "fingerprint": "chrome"
+          },
+          "wsSettings": {
+            "path": "/?ed=2560",
+            "headers": {
+              "Host": "cffq.pages.dev"
+            }
           },
           "sockopt": {
             "dialerProxy": "fragment",
@@ -2365,7 +1464,7 @@
     }
   },
   {
-    "remarks": "🛡️ 🇺🇸 US · REALITY · 97ms · Zippy #19",
+    "remarks": "🛡️ 🇩🇪 DE · REALITY · 404ms · Zippy #12",
     "log": {
       "loglevel": "warning"
     },
@@ -2414,142 +1513,11 @@
         "settings": {
           "vnext": [
             {
-              "address": "panel.apexkey.store",
-              "port": 2053,
-              "users": [
-                {
-                  "id": "cdb7fa1d-6e7a-467c-da9c-da363c7bf779",
-                  "encryption": "none"
-                }
-              ]
-            }
-          ]
-        },
-        "streamSettings": {
-          "network": "tcp",
-          "security": "reality",
-          "realitySettings": {
-            "show": false,
-            "fingerprint": "chrome",
-            "serverName": "www.cloudflare.com",
-            "publicKey": "DEFJSLdILrvauMpwtpvFZddadpt3rNtv03Dui2EkmRk",
-            "shortId": "68",
-            "spiderX": "/"
-          },
-          "sockopt": {
-            "dialerProxy": "fragment",
-            "tcpKeepAliveIdle": 100,
-            "tcpNoDelay": true
-          }
-        }
-      },
-      {
-        "tag": "fragment",
-        "protocol": "freedom",
-        "settings": {
-          "domainStrategy": "UseIP",
-          "fragment": {
-            "packets": "tlshello",
-            "length": "100-200",
-            "interval": "10-20"
-          }
-        },
-        "streamSettings": {
-          "sockopt": {
-            "tcpNoDelay": true,
-            "tcpKeepAliveIdle": 100
-          }
-        }
-      },
-      {
-        "tag": "direct",
-        "protocol": "freedom"
-      },
-      {
-        "tag": "block",
-        "protocol": "blackhole"
-      }
-    ],
-    "routing": {
-      "domainStrategy": "IPIfNonMatch",
-      "rules": [
-        {
-          "type": "field",
-          "ip": [
-            "10.0.0.0/8",
-            "172.16.0.0/12",
-            "192.168.0.0/16",
-            "127.0.0.0/8",
-            "169.254.0.0/16",
-            "fc00::/7",
-            "fe80::/10",
-            "::1/128"
-          ],
-          "outboundTag": "direct"
-        },
-        {
-          "type": "field",
-          "network": "tcp,udp",
-          "outboundTag": "proxy"
-        }
-      ]
-    }
-  },
-  {
-    "remarks": "🛡️ 🇩🇪 DE · REALITY · 446ms · Zippy #20",
-    "log": {
-      "loglevel": "warning"
-    },
-    "dns": {
-      "servers": [
-        "https://1.1.1.1/dns-query",
-        "https://8.8.8.8/dns-query",
-        "1.1.1.1"
-      ],
-      "queryStrategy": "UseIPv4"
-    },
-    "inbounds": [
-      {
-        "tag": "socks",
-        "port": 10808,
-        "listen": "127.0.0.1",
-        "protocol": "socks",
-        "sniffing": {
-          "enabled": true,
-          "destOverride": [
-            "http",
-            "tls",
-            "quic"
-          ],
-          "routeOnly": true
-        },
-        "settings": {
-          "auth": "noauth",
-          "udp": true
-        }
-      },
-      {
-        "tag": "http",
-        "port": 10809,
-        "listen": "127.0.0.1",
-        "protocol": "http",
-        "settings": {
-          "allowTransparent": false
-        }
-      }
-    ],
-    "outbounds": [
-      {
-        "tag": "proxy",
-        "protocol": "vless",
-        "settings": {
-          "vnext": [
-            {
-              "address": "187.7.206.49",
+              "address": "78.17.215.141",
               "port": 443,
               "users": [
                 {
-                  "id": "976f82d9-0e6b-40ed-9c09-cafd06c4bc98",
+                  "id": "a346c521-7a7f-452b-9356-a4893feb5982",
                   "encryption": "none",
                   "flow": "xtls-rprx-vision"
                 }
@@ -2563,9 +1531,9 @@
           "realitySettings": {
             "show": false,
             "fingerprint": "chrome",
-            "serverName": "de166.mech-pro.online",
-            "publicKey": "jbiddtGRgeBvlkjbuA3aU-WPjKgEX87tOVh1mFfvOUI",
-            "shortId": "16e0f049",
+            "serverName": "de15-r.bankai.party",
+            "publicKey": "FWitre1jinQR7qz5HQ0q2Q4Gg9xA9B0SyizCziN7Ch0",
+            "shortId": "457fab2ac885dbe0",
             "spiderX": "/"
           },
           "sockopt": {
@@ -2628,7 +1596,271 @@
     }
   },
   {
-    "remarks": "🛡️ 🇩🇪 DE · REALITY · 508ms · Zippy #21",
+    "remarks": "🛡️ 🇩🇪 DE · REALITY · 413ms · Zippy #13",
+    "log": {
+      "loglevel": "warning"
+    },
+    "dns": {
+      "servers": [
+        "https://1.1.1.1/dns-query",
+        "https://8.8.8.8/dns-query",
+        "1.1.1.1"
+      ],
+      "queryStrategy": "UseIPv4"
+    },
+    "inbounds": [
+      {
+        "tag": "socks",
+        "port": 10808,
+        "listen": "127.0.0.1",
+        "protocol": "socks",
+        "sniffing": {
+          "enabled": true,
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "routeOnly": true
+        },
+        "settings": {
+          "auth": "noauth",
+          "udp": true
+        }
+      },
+      {
+        "tag": "http",
+        "port": 10809,
+        "listen": "127.0.0.1",
+        "protocol": "http",
+        "settings": {
+          "allowTransparent": false
+        }
+      }
+    ],
+    "outbounds": [
+      {
+        "tag": "proxy",
+        "protocol": "vless",
+        "settings": {
+          "vnext": [
+            {
+              "address": "31.56.18.99",
+              "port": 443,
+              "users": [
+                {
+                  "id": "0ef68b29-266e-4e0a-b935-eaa02975a439",
+                  "encryption": "none",
+                  "flow": "xtls-rprx-vision"
+                }
+              ]
+            }
+          ]
+        },
+        "streamSettings": {
+          "network": "tcp",
+          "security": "reality",
+          "realitySettings": {
+            "show": false,
+            "fingerprint": "chrome",
+            "serverName": "play.cloudconsole.ru",
+            "publicKey": "RtoBkG8dr6pam2Z7bskxQxSlw17C1pDfzYeafDo2nG8",
+            "shortId": "d16188300cd57a53",
+            "spiderX": "/"
+          },
+          "sockopt": {
+            "dialerProxy": "fragment",
+            "tcpKeepAliveIdle": 100,
+            "tcpNoDelay": true
+          }
+        }
+      },
+      {
+        "tag": "fragment",
+        "protocol": "freedom",
+        "settings": {
+          "domainStrategy": "UseIP",
+          "fragment": {
+            "packets": "tlshello",
+            "length": "100-200",
+            "interval": "10-20"
+          }
+        },
+        "streamSettings": {
+          "sockopt": {
+            "tcpNoDelay": true,
+            "tcpKeepAliveIdle": 100
+          }
+        }
+      },
+      {
+        "tag": "direct",
+        "protocol": "freedom"
+      },
+      {
+        "tag": "block",
+        "protocol": "blackhole"
+      }
+    ],
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        {
+          "type": "field",
+          "ip": [
+            "10.0.0.0/8",
+            "172.16.0.0/12",
+            "192.168.0.0/16",
+            "127.0.0.0/8",
+            "169.254.0.0/16",
+            "fc00::/7",
+            "fe80::/10",
+            "::1/128"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "type": "field",
+          "network": "tcp,udp",
+          "outboundTag": "proxy"
+        }
+      ]
+    }
+  },
+  {
+    "remarks": "🛡️ 🇩🇪 DE · REALITY · 417ms · Zippy #14",
+    "log": {
+      "loglevel": "warning"
+    },
+    "dns": {
+      "servers": [
+        "https://1.1.1.1/dns-query",
+        "https://8.8.8.8/dns-query",
+        "1.1.1.1"
+      ],
+      "queryStrategy": "UseIPv4"
+    },
+    "inbounds": [
+      {
+        "tag": "socks",
+        "port": 10808,
+        "listen": "127.0.0.1",
+        "protocol": "socks",
+        "sniffing": {
+          "enabled": true,
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "routeOnly": true
+        },
+        "settings": {
+          "auth": "noauth",
+          "udp": true
+        }
+      },
+      {
+        "tag": "http",
+        "port": 10809,
+        "listen": "127.0.0.1",
+        "protocol": "http",
+        "settings": {
+          "allowTransparent": false
+        }
+      }
+    ],
+    "outbounds": [
+      {
+        "tag": "proxy",
+        "protocol": "vless",
+        "settings": {
+          "vnext": [
+            {
+              "address": "93.123.101.198",
+              "port": 443,
+              "users": [
+                {
+                  "id": "a346c521-7a7f-452b-9356-a4893feb5982",
+                  "encryption": "none",
+                  "flow": "xtls-rprx-vision"
+                }
+              ]
+            }
+          ]
+        },
+        "streamSettings": {
+          "network": "tcp",
+          "security": "reality",
+          "realitySettings": {
+            "show": false,
+            "fingerprint": "chrome",
+            "serverName": "de14-r.bankai.party",
+            "publicKey": "FWitre1jinQR7qz5HQ0q2Q4Gg9xA9B0SyizCziN7Ch0",
+            "shortId": "",
+            "spiderX": "/"
+          },
+          "sockopt": {
+            "dialerProxy": "fragment",
+            "tcpKeepAliveIdle": 100,
+            "tcpNoDelay": true
+          }
+        }
+      },
+      {
+        "tag": "fragment",
+        "protocol": "freedom",
+        "settings": {
+          "domainStrategy": "UseIP",
+          "fragment": {
+            "packets": "tlshello",
+            "length": "100-200",
+            "interval": "10-20"
+          }
+        },
+        "streamSettings": {
+          "sockopt": {
+            "tcpNoDelay": true,
+            "tcpKeepAliveIdle": 100
+          }
+        }
+      },
+      {
+        "tag": "direct",
+        "protocol": "freedom"
+      },
+      {
+        "tag": "block",
+        "protocol": "blackhole"
+      }
+    ],
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        {
+          "type": "field",
+          "ip": [
+            "10.0.0.0/8",
+            "172.16.0.0/12",
+            "192.168.0.0/16",
+            "127.0.0.0/8",
+            "169.254.0.0/16",
+            "fc00::/7",
+            "fe80::/10",
+            "::1/128"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "type": "field",
+          "network": "tcp,udp",
+          "outboundTag": "proxy"
+        }
+      ]
+    }
+  },
+  {
+    "remarks": "🛡️ 🇩🇪 DE · REALITY · 468ms · Zippy #15",
     "log": {
       "loglevel": "warning"
     },
@@ -2760,7 +1992,7 @@
     }
   },
   {
-    "remarks": "🛡️ 🇳🇱 NL · REALITY · 502ms · Zippy #22",
+    "remarks": "🛡️ 🇳🇱 NL · REALITY · 462ms · Zippy #16",
     "log": {
       "loglevel": "warning"
     },
@@ -2809,11 +2041,11 @@
         "settings": {
           "vnext": [
             {
-              "address": "nl.memepn.com",
+              "address": "86.54.28.75",
               "port": 443,
               "users": [
                 {
-                  "id": "f69e272f-e0e5-4e9d-b180-5be63930cde9",
+                  "id": "44ae52b9-76fc-444d-8e43-186b4384b80a",
                   "encryption": "none",
                   "flow": "xtls-rprx-vision"
                 }
@@ -2826,10 +2058,10 @@
           "security": "reality",
           "realitySettings": {
             "show": false,
-            "fingerprint": "firefox",
-            "serverName": "nl.memepn.com",
-            "publicKey": "drl7nndYdfzZY1aQ0eUAWmNV0nsHig2uDnu9siy9biQ",
-            "shortId": "868419504747f6de",
+            "fingerprint": "chrome",
+            "serverName": "www.apple.com",
+            "publicKey": "PryGoq51ilG0eLUPl9i0xCvmk1xpwkyFSr_tG4GNLlU",
+            "shortId": "1d86d17709852910",
             "spiderX": "/"
           },
           "sockopt": {
@@ -2892,7 +2124,670 @@
     }
   },
   {
-    "remarks": "🛡️ 🇳🇱 NL · REALITY · 505ms · Zippy #23",
+    "remarks": "🛡️ 🇺🇸 US · VLESS · 133ms · Zippy #17",
+    "log": {
+      "loglevel": "warning"
+    },
+    "dns": {
+      "servers": [
+        "https://1.1.1.1/dns-query",
+        "https://8.8.8.8/dns-query",
+        "1.1.1.1"
+      ],
+      "queryStrategy": "UseIPv4"
+    },
+    "inbounds": [
+      {
+        "tag": "socks",
+        "port": 10808,
+        "listen": "127.0.0.1",
+        "protocol": "socks",
+        "sniffing": {
+          "enabled": true,
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "routeOnly": true
+        },
+        "settings": {
+          "auth": "noauth",
+          "udp": true
+        }
+      },
+      {
+        "tag": "http",
+        "port": 10809,
+        "listen": "127.0.0.1",
+        "protocol": "http",
+        "settings": {
+          "allowTransparent": false
+        }
+      }
+    ],
+    "outbounds": [
+      {
+        "tag": "proxy",
+        "protocol": "vless",
+        "settings": {
+          "vnext": [
+            {
+              "address": "kuruish.org",
+              "port": 443,
+              "users": [
+                {
+                  "id": "03fcc618-b93d-6796-6aed-8a38c975d581",
+                  "encryption": "none"
+                }
+              ]
+            }
+          ]
+        },
+        "streamSettings": {
+          "network": "tcp",
+          "security": "tls",
+          "tlsSettings": {
+            "serverName": "kuruish.org",
+            "allowInsecure": false,
+            "fingerprint": "chrome"
+          },
+          "sockopt": {
+            "dialerProxy": "fragment",
+            "tcpKeepAliveIdle": 100,
+            "tcpNoDelay": true
+          }
+        }
+      },
+      {
+        "tag": "fragment",
+        "protocol": "freedom",
+        "settings": {
+          "domainStrategy": "UseIP",
+          "fragment": {
+            "packets": "tlshello",
+            "length": "100-200",
+            "interval": "10-20"
+          }
+        },
+        "streamSettings": {
+          "sockopt": {
+            "tcpNoDelay": true,
+            "tcpKeepAliveIdle": 100
+          }
+        }
+      },
+      {
+        "tag": "direct",
+        "protocol": "freedom"
+      },
+      {
+        "tag": "block",
+        "protocol": "blackhole"
+      }
+    ],
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        {
+          "type": "field",
+          "ip": [
+            "10.0.0.0/8",
+            "172.16.0.0/12",
+            "192.168.0.0/16",
+            "127.0.0.0/8",
+            "169.254.0.0/16",
+            "fc00::/7",
+            "fe80::/10",
+            "::1/128"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "type": "field",
+          "network": "tcp,udp",
+          "outboundTag": "proxy"
+        }
+      ]
+    }
+  },
+  {
+    "remarks": "🛡️ 🇳🇱 NL · REALITY · 413ms · Zippy #18",
+    "log": {
+      "loglevel": "warning"
+    },
+    "dns": {
+      "servers": [
+        "https://1.1.1.1/dns-query",
+        "https://8.8.8.8/dns-query",
+        "1.1.1.1"
+      ],
+      "queryStrategy": "UseIPv4"
+    },
+    "inbounds": [
+      {
+        "tag": "socks",
+        "port": 10808,
+        "listen": "127.0.0.1",
+        "protocol": "socks",
+        "sniffing": {
+          "enabled": true,
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "routeOnly": true
+        },
+        "settings": {
+          "auth": "noauth",
+          "udp": true
+        }
+      },
+      {
+        "tag": "http",
+        "port": 10809,
+        "listen": "127.0.0.1",
+        "protocol": "http",
+        "settings": {
+          "allowTransparent": false
+        }
+      }
+    ],
+    "outbounds": [
+      {
+        "tag": "proxy",
+        "protocol": "vless",
+        "settings": {
+          "vnext": [
+            {
+              "address": "94.183.206.227",
+              "port": 443,
+              "users": [
+                {
+                  "id": "7ce93cef-119d-4cba-9d9d-da0056ba979c",
+                  "encryption": "none"
+                }
+              ]
+            }
+          ]
+        },
+        "streamSettings": {
+          "network": "xhttp",
+          "security": "reality",
+          "realitySettings": {
+            "show": false,
+            "fingerprint": "chrome",
+            "serverName": "nl3.green-tg.com",
+            "publicKey": "EhKlZ3cHsJQRkNH7Qeya0ZeAy5jovCT-H4VNivwPyls",
+            "shortId": "0bf13fb706784403",
+            "spiderX": "/"
+          },
+          "xhttpSettings": {
+            "path": "/api/v2/7d94497a",
+            "mode": "auto"
+          },
+          "sockopt": {
+            "dialerProxy": "fragment",
+            "tcpKeepAliveIdle": 100,
+            "tcpNoDelay": true
+          }
+        }
+      },
+      {
+        "tag": "fragment",
+        "protocol": "freedom",
+        "settings": {
+          "domainStrategy": "UseIP",
+          "fragment": {
+            "packets": "tlshello",
+            "length": "100-200",
+            "interval": "10-20"
+          }
+        },
+        "streamSettings": {
+          "sockopt": {
+            "tcpNoDelay": true,
+            "tcpKeepAliveIdle": 100
+          }
+        }
+      },
+      {
+        "tag": "direct",
+        "protocol": "freedom"
+      },
+      {
+        "tag": "block",
+        "protocol": "blackhole"
+      }
+    ],
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        {
+          "type": "field",
+          "ip": [
+            "10.0.0.0/8",
+            "172.16.0.0/12",
+            "192.168.0.0/16",
+            "127.0.0.0/8",
+            "169.254.0.0/16",
+            "fc00::/7",
+            "fe80::/10",
+            "::1/128"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "type": "field",
+          "network": "tcp,udp",
+          "outboundTag": "proxy"
+        }
+      ]
+    }
+  },
+  {
+    "remarks": "🛡️ 🇨🇦 CA · VLESS-WS · 83ms · Zippy #19",
+    "log": {
+      "loglevel": "warning"
+    },
+    "dns": {
+      "servers": [
+        "https://1.1.1.1/dns-query",
+        "https://8.8.8.8/dns-query",
+        "1.1.1.1"
+      ],
+      "queryStrategy": "UseIPv4"
+    },
+    "inbounds": [
+      {
+        "tag": "socks",
+        "port": 10808,
+        "listen": "127.0.0.1",
+        "protocol": "socks",
+        "sniffing": {
+          "enabled": true,
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "routeOnly": true
+        },
+        "settings": {
+          "auth": "noauth",
+          "udp": true
+        }
+      },
+      {
+        "tag": "http",
+        "port": 10809,
+        "listen": "127.0.0.1",
+        "protocol": "http",
+        "settings": {
+          "allowTransparent": false
+        }
+      }
+    ],
+    "outbounds": [
+      {
+        "tag": "proxy",
+        "protocol": "vless",
+        "settings": {
+          "vnext": [
+            {
+              "address": "104.27.109.16",
+              "port": 443,
+              "users": [
+                {
+                  "id": "67ab86b7-69fb-41bf-8967-290cbd08f0ac",
+                  "encryption": "none"
+                }
+              ]
+            }
+          ]
+        },
+        "streamSettings": {
+          "network": "ws",
+          "security": "tls",
+          "tlsSettings": {
+            "serverName": "jldmwa9cfrug7b03cr1vs.pages.dev",
+            "allowInsecure": false,
+            "fingerprint": "chrome"
+          },
+          "wsSettings": {
+            "path": "/vl/43gYvFJEPmUtPFSZ?ed=2560",
+            "headers": {
+              "Host": "jldmwa9cfrug7b03cr1vs.pages.dev"
+            }
+          },
+          "sockopt": {
+            "dialerProxy": "fragment",
+            "tcpKeepAliveIdle": 100,
+            "tcpNoDelay": true
+          }
+        }
+      },
+      {
+        "tag": "fragment",
+        "protocol": "freedom",
+        "settings": {
+          "domainStrategy": "UseIP",
+          "fragment": {
+            "packets": "tlshello",
+            "length": "100-200",
+            "interval": "10-20"
+          }
+        },
+        "streamSettings": {
+          "sockopt": {
+            "tcpNoDelay": true,
+            "tcpKeepAliveIdle": 100
+          }
+        }
+      },
+      {
+        "tag": "direct",
+        "protocol": "freedom"
+      },
+      {
+        "tag": "block",
+        "protocol": "blackhole"
+      }
+    ],
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        {
+          "type": "field",
+          "ip": [
+            "10.0.0.0/8",
+            "172.16.0.0/12",
+            "192.168.0.0/16",
+            "127.0.0.0/8",
+            "169.254.0.0/16",
+            "fc00::/7",
+            "fe80::/10",
+            "::1/128"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "type": "field",
+          "network": "tcp,udp",
+          "outboundTag": "proxy"
+        }
+      ]
+    }
+  },
+  {
+    "remarks": "🛡️ 🇯🇵 JP · REALITY · 339ms · Zippy #20",
+    "log": {
+      "loglevel": "warning"
+    },
+    "dns": {
+      "servers": [
+        "https://1.1.1.1/dns-query",
+        "https://8.8.8.8/dns-query",
+        "1.1.1.1"
+      ],
+      "queryStrategy": "UseIPv4"
+    },
+    "inbounds": [
+      {
+        "tag": "socks",
+        "port": 10808,
+        "listen": "127.0.0.1",
+        "protocol": "socks",
+        "sniffing": {
+          "enabled": true,
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "routeOnly": true
+        },
+        "settings": {
+          "auth": "noauth",
+          "udp": true
+        }
+      },
+      {
+        "tag": "http",
+        "port": 10809,
+        "listen": "127.0.0.1",
+        "protocol": "http",
+        "settings": {
+          "allowTransparent": false
+        }
+      }
+    ],
+    "outbounds": [
+      {
+        "tag": "proxy",
+        "protocol": "vless",
+        "settings": {
+          "vnext": [
+            {
+              "address": "31.76.91.98",
+              "port": 443,
+              "users": [
+                {
+                  "id": "7072eeba-94fd-4fb3-92f2-a4506dd84cd8",
+                  "encryption": "none",
+                  "flow": "xtls-rprx-vision"
+                }
+              ]
+            }
+          ]
+        },
+        "streamSettings": {
+          "network": "tcp",
+          "security": "reality",
+          "realitySettings": {
+            "show": false,
+            "fingerprint": "chrome",
+            "serverName": "fuji.etherhub.cc",
+            "publicKey": "ejx56dFtS4LK_Th6HSLFFdm7v7zqRpv8KfjrWAw4Sjg",
+            "shortId": "bd6f67b6b2152b45",
+            "spiderX": "/"
+          },
+          "sockopt": {
+            "dialerProxy": "fragment",
+            "tcpKeepAliveIdle": 100,
+            "tcpNoDelay": true
+          }
+        }
+      },
+      {
+        "tag": "fragment",
+        "protocol": "freedom",
+        "settings": {
+          "domainStrategy": "UseIP",
+          "fragment": {
+            "packets": "tlshello",
+            "length": "100-200",
+            "interval": "10-20"
+          }
+        },
+        "streamSettings": {
+          "sockopt": {
+            "tcpNoDelay": true,
+            "tcpKeepAliveIdle": 100
+          }
+        }
+      },
+      {
+        "tag": "direct",
+        "protocol": "freedom"
+      },
+      {
+        "tag": "block",
+        "protocol": "blackhole"
+      }
+    ],
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        {
+          "type": "field",
+          "ip": [
+            "10.0.0.0/8",
+            "172.16.0.0/12",
+            "192.168.0.0/16",
+            "127.0.0.0/8",
+            "169.254.0.0/16",
+            "fc00::/7",
+            "fe80::/10",
+            "::1/128"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "type": "field",
+          "network": "tcp,udp",
+          "outboundTag": "proxy"
+        }
+      ]
+    }
+  },
+  {
+    "remarks": "🛡️ 🇨🇦 CA · VLESS-WS · 87ms · Zippy #21",
+    "log": {
+      "loglevel": "warning"
+    },
+    "dns": {
+      "servers": [
+        "https://1.1.1.1/dns-query",
+        "https://8.8.8.8/dns-query",
+        "1.1.1.1"
+      ],
+      "queryStrategy": "UseIPv4"
+    },
+    "inbounds": [
+      {
+        "tag": "socks",
+        "port": 10808,
+        "listen": "127.0.0.1",
+        "protocol": "socks",
+        "sniffing": {
+          "enabled": true,
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "routeOnly": true
+        },
+        "settings": {
+          "auth": "noauth",
+          "udp": true
+        }
+      },
+      {
+        "tag": "http",
+        "port": 10809,
+        "listen": "127.0.0.1",
+        "protocol": "http",
+        "settings": {
+          "allowTransparent": false
+        }
+      }
+    ],
+    "outbounds": [
+      {
+        "tag": "proxy",
+        "protocol": "vless",
+        "settings": {
+          "vnext": [
+            {
+              "address": "188.114.97.3",
+              "port": 443,
+              "users": [
+                {
+                  "id": "27135ee3-0829-4dbc-ae3e-b70e86e5d510",
+                  "encryption": "none"
+                }
+              ]
+            }
+          ]
+        },
+        "streamSettings": {
+          "network": "ws",
+          "security": "tls",
+          "tlsSettings": {
+            "serverName": "63yw55ibrgt8rswbfnmhapuzux4p29favnxxslbjbnmqjzz7efh95h3nfdsfdsf.d2ha6.workers.dev",
+            "allowInsecure": false,
+            "fingerprint": "chrome"
+          },
+          "wsSettings": {
+            "path": "/Telegram+channel+:+@pandavpntc",
+            "headers": {
+              "Host": "63yw55ibrgt8rswbfnmhapuzux4p29favnxxslbjbnmqjzz7efh95h3nfdsfdsf.d2ha6.workers.dev"
+            }
+          },
+          "sockopt": {
+            "dialerProxy": "fragment",
+            "tcpKeepAliveIdle": 100,
+            "tcpNoDelay": true
+          }
+        }
+      },
+      {
+        "tag": "fragment",
+        "protocol": "freedom",
+        "settings": {
+          "domainStrategy": "UseIP",
+          "fragment": {
+            "packets": "tlshello",
+            "length": "100-200",
+            "interval": "10-20"
+          }
+        },
+        "streamSettings": {
+          "sockopt": {
+            "tcpNoDelay": true,
+            "tcpKeepAliveIdle": 100
+          }
+        }
+      },
+      {
+        "tag": "direct",
+        "protocol": "freedom"
+      },
+      {
+        "tag": "block",
+        "protocol": "blackhole"
+      }
+    ],
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        {
+          "type": "field",
+          "ip": [
+            "10.0.0.0/8",
+            "172.16.0.0/12",
+            "192.168.0.0/16",
+            "127.0.0.0/8",
+            "169.254.0.0/16",
+            "fc00::/7",
+            "fe80::/10",
+            "::1/128"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "type": "field",
+          "network": "tcp,udp",
+          "outboundTag": "proxy"
+        }
+      ]
+    }
+  },
+  {
+    "remarks": "🛡️ 🇳🇱 NL · REALITY · 478ms · Zippy #22",
     "log": {
       "loglevel": "warning"
     },
@@ -3024,7 +2919,274 @@
     }
   },
   {
-    "remarks": "🛡️ 🇩🇪 DE · REALITY · 460ms · Zippy #24",
+    "remarks": "🛡️ 🇩🇪 DE · REALITY · 425ms · Zippy #23",
+    "log": {
+      "loglevel": "warning"
+    },
+    "dns": {
+      "servers": [
+        "https://1.1.1.1/dns-query",
+        "https://8.8.8.8/dns-query",
+        "1.1.1.1"
+      ],
+      "queryStrategy": "UseIPv4"
+    },
+    "inbounds": [
+      {
+        "tag": "socks",
+        "port": 10808,
+        "listen": "127.0.0.1",
+        "protocol": "socks",
+        "sniffing": {
+          "enabled": true,
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "routeOnly": true
+        },
+        "settings": {
+          "auth": "noauth",
+          "udp": true
+        }
+      },
+      {
+        "tag": "http",
+        "port": 10809,
+        "listen": "127.0.0.1",
+        "protocol": "http",
+        "settings": {
+          "allowTransparent": false
+        }
+      }
+    ],
+    "outbounds": [
+      {
+        "tag": "proxy",
+        "protocol": "vless",
+        "settings": {
+          "vnext": [
+            {
+              "address": "185.248.141.233",
+              "port": 443,
+              "users": [
+                {
+                  "id": "c3abfda2-9261-4173-a8dc-afe269a15491",
+                  "encryption": "none"
+                }
+              ]
+            }
+          ]
+        },
+        "streamSettings": {
+          "network": "xhttp",
+          "security": "reality",
+          "realitySettings": {
+            "show": false,
+            "fingerprint": "chrome",
+            "serverName": "img.tg-english.ru",
+            "publicKey": "PKzmCLsjYi2KGjojE0QLaT0r_PWoDd2VVHEobRtf62Q",
+            "shortId": "1c9b760681e407d8",
+            "spiderX": "/"
+          },
+          "xhttpSettings": {
+            "path": "/img/cache/v8/Fr4kNt/seg",
+            "mode": "stream-one"
+          },
+          "sockopt": {
+            "dialerProxy": "fragment",
+            "tcpKeepAliveIdle": 100,
+            "tcpNoDelay": true
+          }
+        }
+      },
+      {
+        "tag": "fragment",
+        "protocol": "freedom",
+        "settings": {
+          "domainStrategy": "UseIP",
+          "fragment": {
+            "packets": "tlshello",
+            "length": "100-200",
+            "interval": "10-20"
+          }
+        },
+        "streamSettings": {
+          "sockopt": {
+            "tcpNoDelay": true,
+            "tcpKeepAliveIdle": 100
+          }
+        }
+      },
+      {
+        "tag": "direct",
+        "protocol": "freedom"
+      },
+      {
+        "tag": "block",
+        "protocol": "blackhole"
+      }
+    ],
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        {
+          "type": "field",
+          "ip": [
+            "10.0.0.0/8",
+            "172.16.0.0/12",
+            "192.168.0.0/16",
+            "127.0.0.0/8",
+            "169.254.0.0/16",
+            "fc00::/7",
+            "fe80::/10",
+            "::1/128"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "type": "field",
+          "network": "tcp,udp",
+          "outboundTag": "proxy"
+        }
+      ]
+    }
+  },
+  {
+    "remarks": "🛡️ 🇩🇪 DE · REALITY · 438ms · Zippy #24",
+    "log": {
+      "loglevel": "warning"
+    },
+    "dns": {
+      "servers": [
+        "https://1.1.1.1/dns-query",
+        "https://8.8.8.8/dns-query",
+        "1.1.1.1"
+      ],
+      "queryStrategy": "UseIPv4"
+    },
+    "inbounds": [
+      {
+        "tag": "socks",
+        "port": 10808,
+        "listen": "127.0.0.1",
+        "protocol": "socks",
+        "sniffing": {
+          "enabled": true,
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ],
+          "routeOnly": true
+        },
+        "settings": {
+          "auth": "noauth",
+          "udp": true
+        }
+      },
+      {
+        "tag": "http",
+        "port": 10809,
+        "listen": "127.0.0.1",
+        "protocol": "http",
+        "settings": {
+          "allowTransparent": false
+        }
+      }
+    ],
+    "outbounds": [
+      {
+        "tag": "proxy",
+        "protocol": "vless",
+        "settings": {
+          "vnext": [
+            {
+              "address": "187.7.206.49",
+              "port": 443,
+              "users": [
+                {
+                  "id": "976f82d9-0e6b-40ed-9c09-cafd06c4bc98",
+                  "encryption": "none",
+                  "flow": "xtls-rprx-vision"
+                }
+              ]
+            }
+          ]
+        },
+        "streamSettings": {
+          "network": "tcp",
+          "security": "reality",
+          "realitySettings": {
+            "show": false,
+            "fingerprint": "chrome",
+            "serverName": "de166.mech-pro.online",
+            "publicKey": "jbiddtGRgeBvlkjbuA3aU-WPjKgEX87tOVh1mFfvOUI",
+            "shortId": "16e0f049",
+            "spiderX": "/"
+          },
+          "sockopt": {
+            "dialerProxy": "fragment",
+            "tcpKeepAliveIdle": 100,
+            "tcpNoDelay": true
+          }
+        }
+      },
+      {
+        "tag": "fragment",
+        "protocol": "freedom",
+        "settings": {
+          "domainStrategy": "UseIP",
+          "fragment": {
+            "packets": "tlshello",
+            "length": "100-200",
+            "interval": "10-20"
+          }
+        },
+        "streamSettings": {
+          "sockopt": {
+            "tcpNoDelay": true,
+            "tcpKeepAliveIdle": 100
+          }
+        }
+      },
+      {
+        "tag": "direct",
+        "protocol": "freedom"
+      },
+      {
+        "tag": "block",
+        "protocol": "blackhole"
+      }
+    ],
+    "routing": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        {
+          "type": "field",
+          "ip": [
+            "10.0.0.0/8",
+            "172.16.0.0/12",
+            "192.168.0.0/16",
+            "127.0.0.0/8",
+            "169.254.0.0/16",
+            "fc00::/7",
+            "fe80::/10",
+            "::1/128"
+          ],
+          "outboundTag": "direct"
+        },
+        {
+          "type": "field",
+          "network": "tcp,udp",
+          "outboundTag": "proxy"
+        }
+      ]
+    }
+  },
+  {
+    "remarks": "🛡️ 🇩🇪 DE · REALITY · 426ms · Zippy #25",
     "log": {
       "loglevel": "warning"
     },
@@ -3098,138 +3260,6 @@
           "xhttpSettings": {
             "path": "/img/cache/v8/Fr4kNt/seg?TELEGRAM--B2Hub-B2Hub-B2Hub-B2Hub-B2Hub-B2Hub-B2Hub-B2Hub-B2Hub-B2Hub--TELEGRAM",
             "mode": "stream-one"
-          },
-          "sockopt": {
-            "dialerProxy": "fragment",
-            "tcpKeepAliveIdle": 100,
-            "tcpNoDelay": true
-          }
-        }
-      },
-      {
-        "tag": "fragment",
-        "protocol": "freedom",
-        "settings": {
-          "domainStrategy": "UseIP",
-          "fragment": {
-            "packets": "tlshello",
-            "length": "100-200",
-            "interval": "10-20"
-          }
-        },
-        "streamSettings": {
-          "sockopt": {
-            "tcpNoDelay": true,
-            "tcpKeepAliveIdle": 100
-          }
-        }
-      },
-      {
-        "tag": "direct",
-        "protocol": "freedom"
-      },
-      {
-        "tag": "block",
-        "protocol": "blackhole"
-      }
-    ],
-    "routing": {
-      "domainStrategy": "IPIfNonMatch",
-      "rules": [
-        {
-          "type": "field",
-          "ip": [
-            "10.0.0.0/8",
-            "172.16.0.0/12",
-            "192.168.0.0/16",
-            "127.0.0.0/8",
-            "169.254.0.0/16",
-            "fc00::/7",
-            "fe80::/10",
-            "::1/128"
-          ],
-          "outboundTag": "direct"
-        },
-        {
-          "type": "field",
-          "network": "tcp,udp",
-          "outboundTag": "proxy"
-        }
-      ]
-    }
-  },
-  {
-    "remarks": "🛡️ 🇳🇱 NL · REALITY · 520ms · Zippy #25",
-    "log": {
-      "loglevel": "warning"
-    },
-    "dns": {
-      "servers": [
-        "https://1.1.1.1/dns-query",
-        "https://8.8.8.8/dns-query",
-        "1.1.1.1"
-      ],
-      "queryStrategy": "UseIPv4"
-    },
-    "inbounds": [
-      {
-        "tag": "socks",
-        "port": 10808,
-        "listen": "127.0.0.1",
-        "protocol": "socks",
-        "sniffing": {
-          "enabled": true,
-          "destOverride": [
-            "http",
-            "tls",
-            "quic"
-          ],
-          "routeOnly": true
-        },
-        "settings": {
-          "auth": "noauth",
-          "udp": true
-        }
-      },
-      {
-        "tag": "http",
-        "port": 10809,
-        "listen": "127.0.0.1",
-        "protocol": "http",
-        "settings": {
-          "allowTransparent": false
-        }
-      }
-    ],
-    "outbounds": [
-      {
-        "tag": "proxy",
-        "protocol": "vless",
-        "settings": {
-          "vnext": [
-            {
-              "address": "86.54.28.75",
-              "port": 443,
-              "users": [
-                {
-                  "id": "44ae52b9-76fc-444d-8e43-186b4384b80a",
-                  "encryption": "none",
-                  "flow": "xtls-rprx-vision"
-                }
-              ]
-            }
-          ]
-        },
-        "streamSettings": {
-          "network": "tcp",
-          "security": "reality",
-          "realitySettings": {
-            "show": false,
-            "fingerprint": "chrome",
-            "serverName": "www.apple.com",
-            "publicKey": "PryGoq51ilG0eLUPl9i0xCvmk1xpwkyFSr_tG4GNLlU",
-            "shortId": "1d86d17709852910",
-            "spiderX": "/"
           },
           "sockopt": {
             "dialerProxy": "fragment",
