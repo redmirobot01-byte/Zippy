@@ -3,6 +3,5 @@
 #subscription-userinfo: upload=0; download=0; total=0; expire=0
 #profile-web-page-url: https://redmirobot01-byte.github.io/Zippy/
 #announce: base64:4pqhIFppcHB5IFZQTiDigJQgR2l0SHViIGFya2FseSBhd3RvLXTDpHplbGVuw73DpHIgKEhhcHAgQW5kcm9pZCk=
-# Zippy VPN | Updated: 2026-11-27 12:46 UTC | Nodes: 2
-trojan://963A4918-A630-29DA-A873-093CDF8AD784@bitter-math-4364.vpnetwork3567.workers.dev:443?security=tls&type=ws&sni=bitter-math-4364.vpnetwork3567.workers.dev&fp=ios&path=%2F&host=bitter-math-4364.vpnetwork3567.workers.dev&alpn=http%2F1.1#%F0%9F%87%BA%F0%9F%87%A6%20UA%20%C2%B7%20TROJAN%20%C2%B7%20872ms%20%C2%B7%20Zippy%20%2301
-trojan://963A4918-A630-29DA-A873-093CDF8AD784@lingering-fire-1fe9.vpnetwork3567.workers.dev:443?security=tls&type=ws&sni=lingering-fire-1fe9.vpnetwork3567.workers.dev&fp=ios&path=%2F&host=lingering-fire-1fe9.vpnetwork3567.workers.dev&alpn=http%2F1.1#%F0%9F%87%B8%F0%9F%87%AC%20SG%20%C2%B7%20TROJAN%20%C2%B7%20979ms%20%C2%B7%20Zippy%20%2302
+# Zippy VPN | Updated: 2026-11-27 23:32 UTC | Nodes: 1
+trojan://963A4918-A630-29DA-A873-093CDF8AD784@bitter-math-4364.vpnetwork3567.workers.dev:443?security=tls&type=ws&sni=bitter-math-4364.vpnetwork3567.workers.dev&fp=firefox&path=%2F&host=bitter-math-4364.vpnetwork3567.workers.dev&alpn=http%2F1.1#%F0%9F%87%BA%F0%9F%87%A6%20UA%20%C2%B7%20TROJAN%20%C2%B7%20707ms%20%C2%B7%20Zippy%20%2301
